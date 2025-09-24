@@ -3,7 +3,7 @@
   // Only ONE should be active (uncomment it)
   // These are the common, real-world layouts you’ll see in email clients and MTAs.
 
-  "mimeLayout": "plain"         // = Only plain text (safest, no HTML)
+  // "mimeLayout": "plain"         // = Only plain text (safest, no HTML)
 
   // "mimeLayout": "html"        // = Only HTML body (no plain fallback)
 
@@ -22,5 +22,5 @@
 
   // "mimeLayout": "signed"      // = multipart/signed (body + digital signature, e.g. PGP or S/MIME)
 
-  // "mimeLayout": "encrypted"   // = multipart/encrypted (PGP/S-MIME encrypted message container)
+   "mimeLayout": "encrypted"   // = multipart/encrypted (PGP/S-MIME encrypted message container)
 }
