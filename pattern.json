@@ -23,4 +23,14 @@
   // "mimeLayout": "signed"      // = multipart/signed (body + digital signature, e.g. PGP or S/MIME)
 
   "mimeLayout": "encrypted"   // = multipart/encrypted (PGP/S-MIME encrypted message container)
+
+  // === Content-Transfer-Encoding Options ===
+  // Only ONE should be active (uncomment it)
+
+  "encoding": "quoted-printable"   //= Optimized for mostly-ASCII text, keeps HTML readable
+  // "encoding": "7bit"            //= Pure ASCII only, very light (used by Apple Mail / Outlook headers)
+  // "encoding": "8bit"            //= Extended UTF-8, modern servers handle it fine
+  // "encoding": "base64"          //= Encodes everything as base64 (common for attachments, sometimes body)
+  // "encoding": "binary"          //= Raw binary, rarely accepted by MTAs (not recommended)
+  // "encoding": "uuencode"        //= Legacy pre-MIME encoding, very old (avoid unless testing legacy)
 }
