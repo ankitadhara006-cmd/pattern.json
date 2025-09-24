@@ -1,19 +1,138 @@
 {
-  // "mimeLayout": "plain"
-  // "mimeLayout": "html"
-  // "mimeLayout": "alternative"
-  // "mimeLayout": "mixed"
-  // "mimeLayout": "nested"
-  // "mimeLayout": "related"
-  // "mimeLayout": "digest"
-  // "mimeLayout": "report"
-  // "mimeLayout": "signed"
-  "mimeLayout": "encrypted"   // <= active
+  // =========================================================
+  // 1) MESSAGE STRUCTURE (MIME LAYOUT) — uncomment EXACTLY ONE
+  //    "random" picks one of the 4 concrete options below
+  // =========================================================
+  "mimeLayout": "random",
+  // "mimeLayout": "encrypted",
+  // "mimeLayout": "nested",        // mixed → alternative + attachments
+  // "mimeLayout": "mixed",
+  // "mimeLayout": "alternative",
 
-  // "encoding": "7bit"
-  // "encoding": "8bit"
-  // "encoding": "base64"
-  // "encoding": "binary"
-  // "encoding": "uuencode"
-  "encoding": "quoted-printable"  // <= active
+
+  // =========================================================
+  // 2) ENCODINGS (TEXT PARTS ONLY; attachments always base64)
+  //    — uncomment EXACTLY ONE ("random" picks one of the 4)
+  // =========================================================
+  "encoding": "random",
+  // "encoding": "quoted-printable",
+  // "encoding": "7bit",
+  // "encoding": "8bit",
+  // "encoding": "base64",
+
+
+  // =========================================================
+  // 3) BOUNDARY STRINGS — uncomment EXACTLY ONE
+  //    ("random" picks one of the 4 styles)
+  // =========================================================
+  "boundaryStyle": "random",
+  // "boundaryStyle": "guid",         // ----boundary_<GUID>
+  // "boundaryStyle": "nextpart",     // ----=_NextPart_<RANDOMHEX>
+  // "boundaryStyle": "customprefix", // uses boundaryPrefix
+  // "boundaryStyle": "default",      // let MimeKit choose
+
+  // Used by "customprefix" / "nextpart":
+  "boundaryPrefix": "----boundary_",
+  "boundaryHexLen": 24,
+
+
+  // =========================================================
+  // 4) SUBJECT / FROM NAME FORMATTING — uncomment EXACTLY ONE
+  // =========================================================
+
+  // Subject case:
+  "subjectCase": "random",
+  // "subjectCase": "none",
+  // "subjectCase": "title",
+  // "subjectCase": "upper",
+  // "subjectCase": "lower",
+
+  // Subject prefix ("" means no prefix):
+  "subjectPrefix": "random",
+  // "subjectPrefix": "",
+  // "subjectPrefix": "Re:",
+  // "subjectPrefix": "FW:",
+  // "subjectPrefix": "[Notice]",
+
+  // From-name formatting style:
+  "fromFormat": "random",
+  // "fromFormat": "as-is",
+  // "fromFormat": "first-last",     // John Doe
+  // "fromFormat": "last-first",     // Doe, John
+  // "fromFormat": "initial-dot",    // J. Doe
+  // "fromFormat": "team",           // Accounts Team
+
+  // From-name mode:
+  // - perEmail: change name on EVERY email
+  // - stickyPerAccount: keep the same name for the same Gmail account in this run
+  "fromNameMode": "random",
+  // "fromNameMode": "perEmail",
+  // "fromNameMode": "stickyPerAccount",
+
+
+  // =========================================================
+  // 5) TIMING / BATCH FLOW — uncomment EXACTLY ONE
+  // =========================================================
+  "timingProfile": "random",
+  // "timingProfile": "none",          // no extra delay
+  // "timingProfile": "fixed4s",       // 4000 ms each
+  // "timingProfile": "random2to7s",   // 2–7 s per email
+  // "timingProfile": "random5to15s",  // 5–15 s per email
+
+  // Parameters used by the random/fixed profiles:
+  "minDelayMs": 2000,
+  "maxDelayMs": 7000,
+  "batchPauseEveryMin": 37,
+  "batchPauseEveryMax": 62,
+  "batchPauseMsMin": 30000,
+  "batchPauseMsMax": 90000,
+
+
+  // =========================================================
+  // 6) LINE WRAPPING & WHITESPACE (BODY ONLY) — uncomment ONE
+  //    Applies ONLY to plain/html body and headers; NEVER to attachments
+  // =========================================================
+  "wrapWidth": "random",
+  // "wrapWidth": 74,
+  // "wrapWidth": 76,
+  // "wrapWidth": 78,
+  // "wrapWidth": 80,
+
+  "whitespaceStyle": "random",
+  // "whitespaceStyle": "none",
+  // "whitespaceStyle": "extraBlankLines",
+  // "whitespaceStyle": "tweaks",
+  // "whitespaceStyle": "both",
+
+
+  // =========================================================
+  // 7) ATTACHMENT FILE NAME STYLE — uncomment EXACTLY ONE
+  //    Tokens available: {PREFIX} {DATE} {RAND10} {NUM6} {GUID8} {EXT}
+  // =========================================================
+  "attachmentNamePattern": "random",
+  // "attachmentNamePattern": "{PREFIX}_{RAND10}.{EXT}",
+  // "attachmentNamePattern": "Invoice_{NUM6}.{EXT}",
+  // "attachmentNamePattern": "{DATE}_Report_{GUID8}.{EXT}",
+  // "attachmentNamePattern": "DOC_{RAND10}.{EXT}",
+
+  // Extra options you can pick instead of "random" above:
+  // "attachmentNamePattern": "{PREFIX}-{DATE}-{RAND10}.{EXT}",
+  // "attachmentNamePattern": "{DATE}_{NUM6}.{EXT}",
+  // "attachmentNamePattern": "{PREFIX}_{DATE}_{NUM6}.{EXT}",
+  // "attachmentNamePattern": "Statement_{DATE}_{NUM6}.{EXT}",
+  // "attachmentNamePattern": "Ref_{GUID8}_{NUM6}.{EXT}",
+  // "attachmentNamePattern": "File_{RAND10}.{EXT}",
+  // "attachmentNamePattern": "Attachment_{RAND10}.{EXT}",
+  // "attachmentNamePattern": "Report_{GUID8}.{EXT}",
+  // "attachmentNamePattern": "IMG_{DATE}_{NUM6}.{EXT}",
+  // "attachmentNamePattern": "{DATE}-{GUID8}.{EXT}",
+  // "attachmentNamePattern": "{PREFIX}_{GUID8}.{EXT}",
+  // "attachmentNamePattern": "Notice_{DATE}_{RAND10}.{EXT}",
+  // "attachmentNamePattern": "Record_{NUM6}_{GUID8}.{EXT}",
+
+  // Extension case (for .pdf / .jpg):
+  "extensionCase": "random"
+  // "extensionCase": "lower",     // .pdf / .jpg
+  // "extensionCase": "upper",     // .PDF / .JPG
+  // "extensionCase": "preserve"   // keep whatever your code naturally emits
 }
