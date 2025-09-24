@@ -1,3 +1,10 @@
 {
-  "mimeLayout": "alternative"
+  // === MIME Layout Options ===
+  // Only ONE should be active (uncomment it)
+
+  "mimeLayout": "plain"        // = Sends only plain text (safe, but no formatting).
+  // "mimeLayout": "html"       // = Sends only HTML (rich formatting, but no text fallback).
+  // "mimeLayout": "alternative"// = Sends BOTH plain + HTML (most common & professional).
+  // "mimeLayout": "mixed"      // = Wraps body in multipart/mixed (attachments-friendly).
+  // "mimeLayout": "related"    // = Sends HTML in multipart/related (for inline images).
 }
