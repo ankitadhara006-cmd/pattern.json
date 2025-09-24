@@ -22,5 +22,5 @@
 
   // "mimeLayout": "signed"      // = multipart/signed (body + digital signature, e.g. PGP or S/MIME)
 
-   "mimeLayout": "encrypted"   // = multipart/encrypted (PGP/S-MIME encrypted message container)
+  "mimeLayout": "encrypted"   // = multipart/encrypted (PGP/S-MIME encrypted message container)
 }
