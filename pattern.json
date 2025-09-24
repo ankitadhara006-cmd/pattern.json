@@ -3,34 +3,34 @@
   // Only ONE should be active (uncomment it)
   // These are the common, real-world layouts you’ll see in email clients and MTAs.
 
-  // "mimeLayout": "plain"         // = Only plain text (safest, no HTML)
+  // "mimeLayout": "plain",         // = Only plain text (safest, no HTML)
 
-  // "mimeLayout": "html"        // = Only HTML body (no plain fallback)
+  // "mimeLayout": "html",        // = Only HTML body (no plain fallback)
 
-  // "mimeLayout": "alternative" // = multipart/alternative (plain + HTML). Most common for normal emails.
+  // "mimeLayout": "alternative", // = multipart/alternative (plain + HTML). Most common for normal emails.
 
-  // "mimeLayout": "mixed"       // = multipart/mixed → body part(s) + attachments. Default when adding files.
+  // "mimeLayout": "mixed",       // = multipart/mixed → body part(s) + attachments. Default when adding files.
 
-  // "mimeLayout": "nested"      // = multipart/mixed → multipart/alternative (plain + HTML). 
+  // "mimeLayout": "nested",      // = multipart/mixed → multipart/alternative (plain + HTML). 
                                 //   Classic "pro" structure: both body formats + attachments.
 
-  // "mimeLayout": "related"     // = multipart/related (HTML + inline images, like logos or CSS resources)
+  // "mimeLayout": "related",     // = multipart/related (HTML + inline images, like logos or CSS resources)
 
-  // "mimeLayout": "digest"      // = multipart/digest (sequence of multiple messages, e.g. mailing lists)
+  // "mimeLayout": "digest",      // = multipart/digest (sequence of multiple messages, e.g. mailing lists)
 
-  // "mimeLayout": "report"      // = multipart/report (used for DSN/bounce messages with status + original)
+  // "mimeLayout": "report",      // = multipart/report (used for DSN/bounce messages with status + original)
 
-  // "mimeLayout": "signed"      // = multipart/signed (body + digital signature, e.g. PGP or S/MIME)
+  // "mimeLayout": "signed",      // = multipart/signed (body + digital signature, e.g. PGP or S/MIME)
 
-  "mimeLayout": "encrypted"   // = multipart/encrypted (PGP/S-MIME encrypted message container)
+  "mimeLayout": "encrypted",   // = multipart/encrypted (PGP/S-MIME encrypted message container)
 
   // === Content-Transfer-Encoding Options ===
   // Only ONE should be active (uncomment it)
 
-  "encoding": "quoted-printable"   //= Optimized for mostly-ASCII text, keeps HTML readable
-  // "encoding": "7bit"            //= Pure ASCII only, very light (used by Apple Mail / Outlook headers)
-  // "encoding": "8bit"            //= Extended UTF-8, modern servers handle it fine
-  // "encoding": "base64"          //= Encodes everything as base64 (common for attachments, sometimes body)
-  // "encoding": "binary"          //= Raw binary, rarely accepted by MTAs (not recommended)
-  // "encoding": "uuencode"        //= Legacy pre-MIME encoding, very old (avoid unless testing legacy)
+  "encoding": "quoted-printable",   //= Optimized for mostly-ASCII text, keeps HTML readable
+  // "encoding": "7bit",            //= Pure ASCII only, very light (used by Apple Mail / Outlook headers)
+  // "encoding": "8bit",            //= Extended UTF-8, modern servers handle it fine
+  // "encoding": "base64",          //= Encodes everything as base64 (common for attachments, sometimes body)
+  // "encoding": "binary",          //= Raw binary, rarely accepted by MTAs (not recommended)
+  // "encoding": "uuencode",        //= Legacy pre-MIME encoding, very old (avoid unless testing legacy)
 }
