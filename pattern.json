@@ -6,5 +6,6 @@
   // "mimeLayout": "html"       // = Sends only HTML (rich formatting, but no text fallback).
   // "mimeLayout": "alternative"// = Sends BOTH plain + HTML (most common & professional).
   // "mimeLayout": "mixed"      // = Wraps body in multipart/mixed (attachments-friendly).
+  // "mimeLayout": "nested"     // = Mixed → Alternative (plain + HTML + attachments).
   // "mimeLayout": "related"    // = Sends HTML in multipart/related (for inline images).
 }
