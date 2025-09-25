@@ -31,9 +31,9 @@
   // "boundaryStyle": "customprefix", // uses boundaryPrefix
   // "boundaryStyle": "default",      // let MimeKit choose
 
-  // Used by "customprefix" / "nextpart":
+  "boundaryStyle": "nextpart",     // or "customprefix" / "guid" / "default" / "random"
   "boundaryPrefix": "----boundary_",
-  "boundaryHexLen": 24,
+  "boundaryHexLen": 24
 
 
   // =========================================================
