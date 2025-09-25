@@ -87,10 +87,10 @@
   //      timing.longPauseEvery.min/max
   //      timing.longPauseDurationMs.min/max
   // =========================================================
-  "timing": {
-    "perEmailDelayMs": { "min": 5000, "max": 15000 },
-    "longPauseEvery": { "min": 37, "max": 62 },
-    "longPauseDurationMs": { "min": 30000, "max": 90000 }
+    "timing": {
+    "perEmailDelayMs": { "min": 0, "max": 0 },         // no per-email delay
+    "longPauseEvery": { "min": 40, "max": 60 },        // pause after a random 40–60 emails
+    "longPauseDurationMs": { "min": 7000, "max": 10000 } // pause 7–10 seconds
   },
   // Example alternatives:
   // "timing": { "perEmailDelayMs": { "min": 0, "max": 0 }, "longPauseEvery": { "min": 0, "max": 0 }, "longPauseDurationMs": { "min": 0, "max": 0 } },
