@@ -129,4 +129,8 @@
   // "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "upper",
   // "attachmentExtensionCase": "preserve"
+  // =========================================================
+  //  OPEN TRACKING
+  // =========================================================
+  "openTracking": true,
 }
