@@ -1,18 +1,24 @@
 {
   // =========================================================
-  // 1) MESSAGE STRUCTURE (MIME LAYOUT) — uncomment EXACTLY ONE
-  //    "random" picks one of the 4 concrete options below
+  // 1) MESSAGE STRUCTURE (MIME LAYOUT) — Any one can be used at a time
+  //    Your code reads: "mimeLayout"
+  //    Valid values: plain | html | alternative | mixed | related | nested | digest | report | signed | encrypted | random*
+  //    *If "random", you may also define "mimeLayoutPool": ["alternative","mixed","related"] (optional)
   // =========================================================
   // "mimeLayout": "random",
   "mimeLayout": "encrypted",
-  // "mimeLayout": "nested",        // mixed → alternative + attachments
+  // "mimeLayout": "nested",
   // "mimeLayout": "mixed",
   // "mimeLayout": "alternative",
 
+  // Optional pool used only when mimeLayout = "random"
+  // "mimeLayoutPool": ["alternative", "mixed", "related"],
+
 
   // =========================================================
-  // 2) ENCODINGS (TEXT PARTS ONLY; attachments always base64)
-  //    — uncomment EXACTLY ONE ("random" picks one of the 4)
+  // 2) ENCODINGS (TEXT PARTS ONLY; attachments always base64) — Any one can be used at a time
+  //    Your code reads: "encoding"
+  //    Valid values: quoted-printable | 7bit | 8bit | base64 | random
   // =========================================================
   // "encoding": "random",
   "encoding": "quoted-printable",
@@ -22,117 +28,105 @@
 
 
   // =========================================================
-  // 3) BOUNDARY STRINGS — uncomment EXACTLY ONE
-  //    ("random" picks one of the 4 styles)
+  // 3) BOUNDARY STRINGS — Any one can be used at a time
+  //    Your code reads: "boundaryStyle", "boundaryPrefix", "boundaryHexLen"
+  //    Valid styles: random | guid | nextpart | customprefix | default
   // =========================================================
   // "boundaryStyle": "random",
-  // "boundaryStyle": "guid",         // ----boundary_<GUID>
-  "boundaryStyle": "nextpart",     // ----=_NextPart_<RANDOMHEX>
-  // "boundaryStyle": "customprefix", // uses boundaryPrefix
-  // "boundaryStyle": "default",      // let MimeKit choose
+  // "boundaryStyle": "guid",           // ----boundary_<GUID>
+  "boundaryStyle": "nextpart",         // ----=_NextPart_<RANDOMHEX>
+  // "boundaryStyle": "customprefix",   // uses boundaryPrefix + hex
+  // "boundaryStyle": "default",        // let MimeKit choose
 
-  "boundaryStyle": "nextpart",     // or "customprefix" / "guid" / "default" / "random"
-  "boundaryPrefix": "----boundary_",
-  "boundaryHexLen": 24
+  "boundaryPrefix": "----boundary_",   // used by "customprefix" (safe to keep)
+  "boundaryHexLen": 24,                // 1..64 (used by nextpart/customprefix)
 
 
   // =========================================================
-  // 4) SUBJECT / FROM NAME FORMATTING — uncomment EXACTLY ONE
+  // 4) SUBJECT / FROM NAME FORMATTING — Any one can be used at a time (per key)
+  //    Your code reads: "subjectCase", "subjectPrefix", "fromFormat", "fromNameMode"
+  // ---------------------------------------------------------
+  // subjectCase: as-is | upper | lower | title
   // =========================================================
-
-  // Subject case:
-  // "subjectCase": "random",
-  // "subjectCase": "none",
+  // "subjectCase": "as-is",
   // "subjectCase": "title",
   "subjectCase": "upper",
   // "subjectCase": "lower",
 
-  // Subject prefix ("" means no prefix):
+  // =========================================================
+  // subjectPrefix: exact string ("" means none) OR "random" (from ["", "Re:", "FW:", "[Notice]"])
+  // =========================================================
   "subjectPrefix": "random",
   // "subjectPrefix": "",
   // "subjectPrefix": "Re:",
   // "subjectPrefix": "FW:",
   // "subjectPrefix": "[Notice]",
 
-  // From-name formatting style:
-  // "fromFormat": "random",
+  // =========================================================
+  // fromFormat: as-is | first-last | last-first | initial-dot | team
+  // =========================================================
   // "fromFormat": "as-is",
-  // "fromFormat": "first-last",     // John Doe
-  "fromFormat": "last-first",     // Doe, John
-  // "fromFormat": "initial-dot",    // J. Doe
-  // "fromFormat": "team",           // Accounts Team
+  // "fromFormat": "first-last",
+  "fromFormat": "last-first",
+  // "fromFormat": "initial-dot",
+  // "fromFormat": "team",
 
-  // From-name mode:
-  // - perEmail: change name on EVERY email
-  // - stickyPerAccount: keep the same name for the same Gmail account in this run
-  // "fromNameMode": "random",
+  // =========================================================
+  // fromNameMode: perEmail | stickyPerAccount | random
+  // =========================================================
   // "fromNameMode": "perEmail",
   "fromNameMode": "stickyPerAccount",
+  // "fromNameMode": "random",
 
 
   // =========================================================
-  // 5) TIMING / BATCH FLOW — uncomment EXACTLY ONE
+  // 5) TIMING / BATCH FLOW — Use this schema (your code expects "timing.*")
+  //    Any one set of actual numbers can be used at a time; keep others commented.
+  //    Your code reads:
+  //      timing.perEmailDelayMs.min/max
+  //      timing.longPauseEvery.min/max
+  //      timing.longPauseDurationMs.min/max
   // =========================================================
-  //"timingProfile": "random",
-  // "timingProfile": "none",          // no extra delay
-  // "timingProfile": "fixed4s",       // 4000 ms each
-  // "timingProfile": "random2to7s",   // 2–7 s per email
-  "timingProfile": "random5to15s",  // 5–15 s per email
-
-  // Parameters used by the random/fixed profiles:
-  "minDelayMs": 2000,
-  "maxDelayMs": 7000,
-  "batchPauseEveryMin": 37,
-  "batchPauseEveryMax": 62,
-  "batchPauseMsMin": 30000,
-  "batchPauseMsMax": 90000,
-
-
-  // =========================================================
-  // 6) LINE WRAPPING & WHITESPACE (BODY ONLY) — uncomment ONE
-  //    Applies ONLY to plain/html body and headers; NEVER to attachments
-  // =========================================================
-  "wrapWidth": "random",
-  // "wrapWidth": 74,
-  // "wrapWidth": 76,
-  // "wrapWidth": 78,
-  // "wrapWidth": 80,
-
-  "whitespaceStyle": "random",
-  // "whitespaceStyle": "none",
-  // "whitespaceStyle": "extraBlankLines",
-  // "whitespaceStyle": "tweaks",
-  // "whitespaceStyle": "both",
+  "timing": {
+    "perEmailDelayMs": { "min": 5000, "max": 15000 },
+    "longPauseEvery": { "min": 37, "max": 62 },
+    "longPauseDurationMs": { "min": 30000, "max": 90000 }
+  },
+  // Example alternatives:
+  // "timing": { "perEmailDelayMs": { "min": 0, "max": 0 }, "longPauseEvery": { "min": 0, "max": 0 }, "longPauseDurationMs": { "min": 0, "max": 0 } },
+  // "timing": { "perEmailDelayMs": { "min": 2000, "max": 7000 }, "longPauseEvery": { "min": 50, "max": 80 }, "longPauseDurationMs": { "min": 45000, "max": 120000 } },
 
 
   // =========================================================
-  // 7) ATTACHMENT FILE NAME STYLE — uncomment EXACTLY ONE
-  //    Tokens available: {PREFIX} {DATE} {RAND10} {NUM6} {GUID8} {EXT}
+  // 6) LINE WRAPPING & WHITESPACE (BODY ONLY) — Any one can be used at a time
+  //    Your code reads: "bodyLineStyle"
+  //    Valid values: none | wrap-76 | wrap-80 | pad-spaces | pad-tabs | html-comments
   // =========================================================
-  // "attachmentNamePattern": "random",
-  // "attachmentNamePattern": "{PREFIX}_{RAND10}.{EXT}",
-  // "attachmentNamePattern": "Invoice_{NUM6}.{EXT}",
-  // "attachmentNamePattern": "{DATE}_Report_{GUID8}.{EXT}",
-  // "attachmentNamePattern": "DOC_{RAND10}.{EXT}",
+  "bodyLineStyle": "none",
+  // "bodyLineStyle": "wrap-76",
+  // "bodyLineStyle": "wrap-80",
+  // "bodyLineStyle": "pad-spaces",
+  // "bodyLineStyle": "pad-tabs",
+  // "bodyLineStyle": "html-comments",
 
-  // Extra options you can pick instead of "random" above:
-  "attachmentNamePattern": "{PREFIX}-{DATE}-{RAND10}.{EXT}",
-  // "attachmentNamePattern": "{DATE}_{NUM6}.{EXT}",
-  // "attachmentNamePattern": "{PREFIX}_{DATE}_{NUM6}.{EXT}",
-  // "attachmentNamePattern": "Statement_{DATE}_{NUM6}.{EXT}",
-  // "attachmentNamePattern": "Ref_{GUID8}_{NUM6}.{EXT}",
-  // "attachmentNamePattern": "File_{RAND10}.{EXT}",
-  // "attachmentNamePattern": "Attachment_{RAND10}.{EXT}",
-  // "attachmentNamePattern": "Report_{GUID8}.{EXT}",
-  // "attachmentNamePattern": "IMG_{DATE}_{NUM6}.{EXT}",
-  // "attachmentNamePattern": "{DATE}-{GUID8}.{EXT}",
-  // "attachmentNamePattern": "{PREFIX}_{GUID8}.{EXT}",
-  // "attachmentNamePattern": "Notice_{DATE}_{RAND10}.{EXT}",
-  // "attachmentNamePattern": "Record_{NUM6}_{GUID8}.{EXT}",
 
-  // Extension case (for .pdf / .jpg):
-  "extensionCase": "random"
-  // "extensionCase": "lower",     // .pdf / .jpg
-  // "extensionCase": "upper",     // .PDF / .JPG
-  // "extensionCase": "preserve"   // keep whatever your code naturally emits
+  // =========================================================
+  // 7) ATTACHMENT FILE NAME STYLE — Any one can be used at a time (pick a pattern)
+  //    Your code reads: "attachmentNamePatterns" (ARRAY) and "attachmentExtensionCase"
+  //    Tokens: {PREFIX} {DATE} {RAND10} {NUM6} {GUID8} {EXT}
+  // =========================================================
+  "attachmentNamePatterns": [
+    "{PREFIX}-{DATE}-{RAND10}.{EXT}"
+  ],
+  // Alternatives (comment above and uncomment one of these lines if you want):
+  // "attachmentNamePatterns": ["{PREFIX}_{RAND10}.{EXT}"],
+  // "attachmentNamePatterns": ["Invoice_{NUM6}.{EXT}"],
+  // "attachmentNamePatterns": ["{DATE}_Report_{GUID8}.{EXT}"],
+  // "attachmentNamePatterns": ["DOC_{RAND10}.{EXT}"],
+
+  // Extension case policy for .pdf / .jpg
+  "attachmentExtensionCase": "random"
+  // "attachmentExtensionCase": "lower",
+  // "attachmentExtensionCase": "upper",
+  // "attachmentExtensionCase": "preserve"
 }
