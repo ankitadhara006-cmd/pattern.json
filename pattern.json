@@ -6,8 +6,8 @@
   //    *If "random", you may also define "mimeLayoutPool": ["alternative","mixed","related"] (optional)
   // =========================================================
   // "mimeLayout": "random",
-  "mimeLayout": "encrypted",
-  // "mimeLayout": "nested",
+  // "mimeLayout": "encrypted",
+  "mimeLayout": "nested",
   // "mimeLayout": "mixed",
   // "mimeLayout": "alternative",
 
