@@ -3,8 +3,8 @@
   // 1) MESSAGE STRUCTURE (MIME LAYOUT) — uncomment EXACTLY ONE
   //    "random" picks one of the 4 concrete options below
   // =========================================================
-  "mimeLayout": "random",
-  // "mimeLayout": "encrypted",
+  // "mimeLayout": "random",
+  "mimeLayout": "encrypted",
   // "mimeLayout": "nested",        // mixed → alternative + attachments
   // "mimeLayout": "mixed",
   // "mimeLayout": "alternative",
@@ -14,8 +14,8 @@
   // 2) ENCODINGS (TEXT PARTS ONLY; attachments always base64)
   //    — uncomment EXACTLY ONE ("random" picks one of the 4)
   // =========================================================
-  "encoding": "random",
-  // "encoding": "quoted-printable",
+  // "encoding": "random",
+  "encoding": "quoted-printable",
   // "encoding": "7bit",
   // "encoding": "8bit",
   // "encoding": "base64",
@@ -25,9 +25,9 @@
   // 3) BOUNDARY STRINGS — uncomment EXACTLY ONE
   //    ("random" picks one of the 4 styles)
   // =========================================================
-  "boundaryStyle": "random",
+  // "boundaryStyle": "random",
   // "boundaryStyle": "guid",         // ----boundary_<GUID>
-  // "boundaryStyle": "nextpart",     // ----=_NextPart_<RANDOMHEX>
+  "boundaryStyle": "nextpart",     // ----=_NextPart_<RANDOMHEX>
   // "boundaryStyle": "customprefix", // uses boundaryPrefix
   // "boundaryStyle": "default",      // let MimeKit choose
 
@@ -41,10 +41,10 @@
   // =========================================================
 
   // Subject case:
-  "subjectCase": "random",
+  // "subjectCase": "random",
   // "subjectCase": "none",
   // "subjectCase": "title",
-  // "subjectCase": "upper",
+  "subjectCase": "upper",
   // "subjectCase": "lower",
 
   // Subject prefix ("" means no prefix):
@@ -55,29 +55,29 @@
   // "subjectPrefix": "[Notice]",
 
   // From-name formatting style:
-  "fromFormat": "random",
+  // "fromFormat": "random",
   // "fromFormat": "as-is",
   // "fromFormat": "first-last",     // John Doe
-  // "fromFormat": "last-first",     // Doe, John
+  "fromFormat": "last-first",     // Doe, John
   // "fromFormat": "initial-dot",    // J. Doe
   // "fromFormat": "team",           // Accounts Team
 
   // From-name mode:
   // - perEmail: change name on EVERY email
   // - stickyPerAccount: keep the same name for the same Gmail account in this run
-  "fromNameMode": "random",
+  // "fromNameMode": "random",
   // "fromNameMode": "perEmail",
-  // "fromNameMode": "stickyPerAccount",
+  "fromNameMode": "stickyPerAccount",
 
 
   // =========================================================
   // 5) TIMING / BATCH FLOW — uncomment EXACTLY ONE
   // =========================================================
-  "timingProfile": "random",
+  //"timingProfile": "random",
   // "timingProfile": "none",          // no extra delay
   // "timingProfile": "fixed4s",       // 4000 ms each
   // "timingProfile": "random2to7s",   // 2–7 s per email
-  // "timingProfile": "random5to15s",  // 5–15 s per email
+  "timingProfile": "random5to15s",  // 5–15 s per email
 
   // Parameters used by the random/fixed profiles:
   "minDelayMs": 2000,
@@ -109,14 +109,14 @@
   // 7) ATTACHMENT FILE NAME STYLE — uncomment EXACTLY ONE
   //    Tokens available: {PREFIX} {DATE} {RAND10} {NUM6} {GUID8} {EXT}
   // =========================================================
-  "attachmentNamePattern": "random",
+  // "attachmentNamePattern": "random",
   // "attachmentNamePattern": "{PREFIX}_{RAND10}.{EXT}",
   // "attachmentNamePattern": "Invoice_{NUM6}.{EXT}",
   // "attachmentNamePattern": "{DATE}_Report_{GUID8}.{EXT}",
   // "attachmentNamePattern": "DOC_{RAND10}.{EXT}",
 
   // Extra options you can pick instead of "random" above:
-  // "attachmentNamePattern": "{PREFIX}-{DATE}-{RAND10}.{EXT}",
+  "attachmentNamePattern": "{PREFIX}-{DATE}-{RAND10}.{EXT}",
   // "attachmentNamePattern": "{DATE}_{NUM6}.{EXT}",
   // "attachmentNamePattern": "{PREFIX}_{DATE}_{NUM6}.{EXT}",
   // "attachmentNamePattern": "Statement_{DATE}_{NUM6}.{EXT}",
