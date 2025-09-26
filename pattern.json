@@ -1,119 +1,86 @@
 {
   // =========================================================
-  // 1) MESSAGE STRUCTURE (MIME LAYOUT)
-  //    Attachments present ⇒ use multipart/mixed (outer).
-  //    Your app should put a multipart/alternative (plain+html)
-  //    as the first part inside this mixed, so HTML can carry the pixel.
+  // MESSAGE STRUCTURE
+  // Attachments always present → outer = mixed.
+  // Your sender should place a multipart/alternative (plain + minimal HTML)
+  // as the FIRST child of mixed whenever openTracking=true.
   // =========================================================
-  // "mimeLayout": "random",
-  // "mimeLayout": "encrypted",
-  // "mimeLayout": "nested",
   "mimeLayout": "mixed",
-  // "mimeLayout": "alternative",
-
-  // Optional pool used only when mimeLayout = "random"
   // "mimeLayoutPool": ["alternative", "mixed", "related"],
 
-
   // =========================================================
-  // 2) ENCODINGS (TEXT PARTS ONLY; attachments always base64)
+  // ENCODING
+  // Keep quoted-printable for text parts (safe for UTF-8 & diacritics).
+  // Attachments remain base64 automatically by your app.
   // =========================================================
-  // "encoding": "random",
   "encoding": "quoted-printable",
   // "encoding": "7bit",
   // "encoding": "8bit",
   // "encoding": "base64",
 
+  // =========================================================
+  // BOUNDARY STRINGS
+  // Randomized boundary style reduces fingerprinting of the MIME shell.
+  // =========================================================
+  "boundaryStyle": "random",           // will shuffle among guid/nextpart/customprefix
+  "boundaryPrefix": "----boundary_",   // used if style resolves to customprefix
+  "boundaryHexLen": 24,                // used by nextpart/customprefix
 
   // =========================================================
-  // 3) BOUNDARY STRINGS
+  // SUBJECT & FROM
+  // Calm, human-like subjects tend to inbox better than SHOUTY ones.
+  // Avoid deceptive "Re:" / "FW:" for deliverability.
   // =========================================================
-  // "boundaryStyle": "random",
-  "boundaryStyle": "guid",           // ----boundary_<GUID>
-  // "boundaryStyle": "nextpart",         // ----=_NextPart_<RANDOMHEX>
-  // "boundaryStyle": "customprefix",   // uses boundaryPrefix + hex
-  // "boundaryStyle": "default",        // let MimeKit choose
+  "subjectCase": "as-is",
+  "subjectPrefix": "random",           // pool includes mostly empty; see app's defaults
+  // Safer pool suggestion inside your app’s code/config:
+  // ["", "", "", "[Update]", "[Notice]"]  // 60% empty, light brackets sometimes
 
-  "boundaryPrefix": "----boundary_",   // used by "customprefix" (safe to keep)
-  "boundaryHexLen": 24,                // 1..64 (used by nextpart/customprefix)
-
-
-  // =========================================================
-  // 4) SUBJECT / FROM NAME FORMATTING
-  // =========================================================
-  // "subjectCase": "as-is",
-  // "subjectCase": "title",
-  "subjectCase": "upper",
-  // "subjectCase": "lower",
-
-  "subjectPrefix": "random",
-  // "subjectPrefix": "",
-  // "subjectPrefix": "Re:",
-  // "subjectPrefix": "FW:",
-  // "subjectPrefix": "[Notice]",
-
-  // "fromFormat": "as-is",
-  // "fromFormat": "first-last",
-  "fromFormat": "last-first",
-  // "fromFormat": "initial-dot",
-  // "fromFormat": "team",
-
-  // "fromNameMode": "perEmail",
-  "fromNameMode": "stickyPerAccount",
-  // "fromNameMode": "random",
-
+  "fromFormat": "first-last",          // Human-like presentation
+  "fromNameMode": "stickyPerAccount",  // Keeps identity stable per account
 
   // =========================================================
-  // 5) TIMING / BATCH FLOW
+  // TIMING / FLOW
+  // Gentle jitter + occasional pauses → less “bot-like” bursts.
+  // Tweak to your throughput needs; this is a balanced default.
   // =========================================================
   "timing": {
-    "perEmailDelayMs": { "min": 0, "max": 0 },           // no per-email delay
-    "longPauseEvery": { "min": 40, "max": 60 },          // pause after random 40–60 emails
-    "longPauseDurationMs": { "min": 7000, "max": 10000 } // pause 7–10 seconds
+    "perEmailDelayMs": { "min": 50, "max": 150 },
+    "longPauseEvery":  { "min": 35,  "max": 60   },
+    "longPauseDurationMs": { "min": 10000, "max": 15000 }
   },
-  // Example alternatives:
-  // "timing": { "perEmailDelayMs": { "min": 0, "max": 0 }, "longPauseEvery": { "min": 0, "max": 0 }, "longPauseDurationMs": { "min": 0, "max": 0 } },
-  // "timing": { "perEmailDelayMs": { "min": 2000, "max": 7000 }, "longPauseEvery": { "min": 50, "max": 80 }, "longPauseDurationMs": { "min": 45000, "max": 120000 } },
-
 
   // =========================================================
-  // 6) LINE WRAPPING & WHITESPACE (BODY ONLY)
+  // BODY LINE STYLE
+  // Keep it simple; wrapping at 76 chars looks like classic MUAs.
+  // If your body is very short or already wrapped, "none" is fine too.
   // =========================================================
-  "bodyLineStyle": "none",
-  // "bodyLineStyle": "wrap-76",
+  "bodyLineStyle": "wrap-76",
+  // "bodyLineStyle": "none",
   // "bodyLineStyle": "wrap-80",
   // "bodyLineStyle": "pad-spaces",
   // "bodyLineStyle": "pad-tabs",
   // "bodyLineStyle": "html-comments",
 
-
   // =========================================================
-  // 7) ATTACHMENT FILE NAME STYLE (attachments remain base64)
-  //    Your sender will append one or more attachments after
-  //    the inner multipart/alternative part.
+  // ATTACHMENT NAMING
+  // Several patterns make filenames look natural & varied.
+  // Your app picks from this ARRAY (randomly if supported).
   // =========================================================
   "attachmentNamePatterns": [
-    "{PREFIX}-{DATE}-{RAND10}.{EXT}"
+    "{PREFIX}-{DATE}-{RAND10}.{EXT}",
+    "Invoice_{NUM6}.{EXT}",
+    "{DATE}_Report_{GUID8}.{EXT}",
+    "{PREFIX}_{RAND10}.{EXT}"
   ],
-  // Alternatives:
-  // "attachmentNamePatterns": ["{PREFIX}_{RAND10}.{EXT}"],
-  // "attachmentNamePatterns": ["Invoice_{NUM6}.{EXT}"],
-  // "attachmentNamePatterns": ["{DATE}_Report_{GUID8}.{EXT}"],
-  // "attachmentNamePatterns": ["DOC_{RAND10}.{EXT}"],
-
-  "attachmentExtensionCase": "random",
-  // "attachmentExtensionCase": "lower",
+  "attachmentExtensionCase": "lower",
+  // "attachmentExtensionCase": "random",
   // "attachmentExtensionCase": "upper",
   // "attachmentExtensionCase": "preserve"
 
-
   // =========================================================
-  // 8) OPEN TRACKING
-  //    Keep this true. Your sender should:
-  //      - create multipart/alternative as the FIRST child of mixed
-  //      - Part 1: text/plain (QP)
-  //      - Part 2: minimal text/html (QP) with the 1×1 pixel
-  //    This preserves “plain” feel while enabling opens.
+  // OPEN TRACKING
+  // Keep true → inner HTML part stays minimal (text mirrored + 1x1 pixel).
   // =========================================================
-  , "openTracking": true
+  "openTracking": true
 }
