@@ -1,9 +1,9 @@
 {
   // =========================================================
-  // 1) MESSAGE STRUCTURE (MIME LAYOUT) — Any one can be used at a time
-  //    Your code reads: "mimeLayout"
-  //    Valid values: plain | html | alternative | mixed | related | nested | digest | report | signed | encrypted | random*
-  //    *If "random", you may also define "mimeLayoutPool": ["alternative","mixed","related"] (optional)
+  // 1) MESSAGE STRUCTURE (MIME LAYOUT)
+  //    Attachments present ⇒ use multipart/mixed (outer).
+  //    Your app should put a multipart/alternative (plain+html)
+  //    as the first part inside this mixed, so HTML can carry the pixel.
   // =========================================================
   // "mimeLayout": "random",
   // "mimeLayout": "encrypted",
@@ -16,9 +16,7 @@
 
 
   // =========================================================
-  // 2) ENCODINGS (TEXT PARTS ONLY; attachments always base64) — Any one can be used at a time
-  //    Your code reads: "encoding"
-  //    Valid values: quoted-printable | 7bit | 8bit | base64 | random
+  // 2) ENCODINGS (TEXT PARTS ONLY; attachments always base64)
   // =========================================================
   // "encoding": "random",
   "encoding": "quoted-printable",
@@ -28,9 +26,7 @@
 
 
   // =========================================================
-  // 3) BOUNDARY STRINGS — Any one can be used at a time
-  //    Your code reads: "boundaryStyle", "boundaryPrefix", "boundaryHexLen"
-  //    Valid styles: random | guid | nextpart | customprefix | default
+  // 3) BOUNDARY STRINGS
   // =========================================================
   // "boundaryStyle": "random",
   // "boundaryStyle": "guid",           // ----boundary_<GUID>
@@ -43,53 +39,36 @@
 
 
   // =========================================================
-  // 4) SUBJECT / FROM NAME FORMATTING — Any one can be used at a time (per key)
-  //    Your code reads: "subjectCase", "subjectPrefix", "fromFormat", "fromNameMode"
-  // ---------------------------------------------------------
-  // subjectCase: as-is | upper | lower | title
+  // 4) SUBJECT / FROM NAME FORMATTING
   // =========================================================
   // "subjectCase": "as-is",
   // "subjectCase": "title",
   "subjectCase": "upper",
   // "subjectCase": "lower",
 
-  // =========================================================
-  // subjectPrefix: exact string ("" means none) OR "random" (from ["", "Re:", "FW:", "[Notice]"])
-  // =========================================================
   "subjectPrefix": "random",
   // "subjectPrefix": "",
   // "subjectPrefix": "Re:",
   // "subjectPrefix": "FW:",
   // "subjectPrefix": "[Notice]",
 
-  // =========================================================
-  // fromFormat: as-is | first-last | last-first | initial-dot | team
-  // =========================================================
   // "fromFormat": "as-is",
   // "fromFormat": "first-last",
   "fromFormat": "last-first",
   // "fromFormat": "initial-dot",
   // "fromFormat": "team",
 
-  // =========================================================
-  // fromNameMode: perEmail | stickyPerAccount | random
-  // =========================================================
   // "fromNameMode": "perEmail",
   "fromNameMode": "stickyPerAccount",
   // "fromNameMode": "random",
 
 
   // =========================================================
-  // 5) TIMING / BATCH FLOW — Use this schema (your code expects "timing.*")
-  //    Any one set of actual numbers can be used at a time; keep others commented.
-  //    Your code reads:
-  //      timing.perEmailDelayMs.min/max
-  //      timing.longPauseEvery.min/max
-  //      timing.longPauseDurationMs.min/max
+  // 5) TIMING / BATCH FLOW
   // =========================================================
-    "timing": {
-    "perEmailDelayMs": { "min": 0, "max": 0 },         // no per-email delay
-    "longPauseEvery": { "min": 40, "max": 60 },        // pause after a random 40–60 emails
+  "timing": {
+    "perEmailDelayMs": { "min": 0, "max": 0 },           // no per-email delay
+    "longPauseEvery": { "min": 40, "max": 60 },          // pause after random 40–60 emails
     "longPauseDurationMs": { "min": 7000, "max": 10000 } // pause 7–10 seconds
   },
   // Example alternatives:
@@ -98,9 +77,7 @@
 
 
   // =========================================================
-  // 6) LINE WRAPPING & WHITESPACE (BODY ONLY) — Any one can be used at a time
-  //    Your code reads: "bodyLineStyle"
-  //    Valid values: none | wrap-76 | wrap-80 | pad-spaces | pad-tabs | html-comments
+  // 6) LINE WRAPPING & WHITESPACE (BODY ONLY)
   // =========================================================
   "bodyLineStyle": "none",
   // "bodyLineStyle": "wrap-76",
@@ -111,26 +88,32 @@
 
 
   // =========================================================
-  // 7) ATTACHMENT FILE NAME STYLE — Any one can be used at a time (pick a pattern)
-  //    Your code reads: "attachmentNamePatterns" (ARRAY) and "attachmentExtensionCase"
-  //    Tokens: {PREFIX} {DATE} {RAND10} {NUM6} {GUID8} {EXT}
+  // 7) ATTACHMENT FILE NAME STYLE (attachments remain base64)
+  //    Your sender will append one or more attachments after
+  //    the inner multipart/alternative part.
   // =========================================================
   "attachmentNamePatterns": [
     "{PREFIX}-{DATE}-{RAND10}.{EXT}"
   ],
-  // Alternatives (comment above and uncomment one of these lines if you want):
+  // Alternatives:
   // "attachmentNamePatterns": ["{PREFIX}_{RAND10}.{EXT}"],
   // "attachmentNamePatterns": ["Invoice_{NUM6}.{EXT}"],
   // "attachmentNamePatterns": ["{DATE}_Report_{GUID8}.{EXT}"],
   // "attachmentNamePatterns": ["DOC_{RAND10}.{EXT}"],
 
-  // Extension case policy for .pdf / .jpg
-  "attachmentExtensionCase": "random"
+  "attachmentExtensionCase": "random",
   // "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "upper",
   // "attachmentExtensionCase": "preserve"
+
+
   // =========================================================
-  //  OPEN TRACKING
+  // 8) OPEN TRACKING
+  //    Keep this true. Your sender should:
+  //      - create multipart/alternative as the FIRST child of mixed
+  //      - Part 1: text/plain (QP)
+  //      - Part 2: minimal text/html (QP) with the 1×1 pixel
+  //    This preserves “plain” feel while enabling opens.
   // =========================================================
-  "openTracking": true,
+  , "openTracking": true
 }
