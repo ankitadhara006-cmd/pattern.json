@@ -29,8 +29,8 @@
   // 3) BOUNDARY STRINGS
   // =========================================================
   // "boundaryStyle": "random",
-  // "boundaryStyle": "guid",           // ----boundary_<GUID>
-  "boundaryStyle": "nextpart",         // ----=_NextPart_<RANDOMHEX>
+  "boundaryStyle": "guid",           // ----boundary_<GUID>
+  // "boundaryStyle": "nextpart",         // ----=_NextPart_<RANDOMHEX>
   // "boundaryStyle": "customprefix",   // uses boundaryPrefix + hex
   // "boundaryStyle": "default",        // let MimeKit choose
 
