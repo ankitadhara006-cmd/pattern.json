@@ -7,9 +7,9 @@
   // =========================================================
   // "mimeLayout": "random",
   // "mimeLayout": "encrypted",
-  "mimeLayout": "nested",
+  // "mimeLayout": "nested",
   // "mimeLayout": "mixed",
-  // "mimeLayout": "alternative",
+  "mimeLayout": "alternative",
 
   // Optional pool used only when mimeLayout = "random"
   // "mimeLayoutPool": ["alternative", "mixed", "related"],
