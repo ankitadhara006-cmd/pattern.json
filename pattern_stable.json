@@ -11,7 +11,7 @@
   //    Safe default: "mixed" (outer) so attachments sit outside
   //    the inner multipart/alternative (plain + html).
   // ---------------------------------------------------------
-  // "mimeLayout": "mixed",
+  "mimeLayout": "mixed",
   // "mimeLayout": "alternative",
   // "mimeLayout": "related",
   // "mimeLayout": "nested",
