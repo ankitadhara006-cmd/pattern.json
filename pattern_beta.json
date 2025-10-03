@@ -12,8 +12,8 @@
   //    the inner multipart/alternative (plain + html).
   // ---------------------------------------------------------
   // "mimeLayout": "mixed",
-  "mimeLayout": "alternative",
-  // "mimeLayout": "related",
+  // "mimeLayout": "alternative",
+  "mimeLayout": "related",
   // "mimeLayout": "nested",
   // "mimeLayout": "encrypted",
   // "mimeLayout": "random",
