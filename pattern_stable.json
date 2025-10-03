@@ -15,7 +15,7 @@
   // "mimeLayout": "alternative",
   // "mimeLayout": "related",
   // "mimeLayout": "nested",
-  "mimeLayout": "encrypted",
+  // "mimeLayout": "encrypted",
   // "mimeLayout": "random",
 
   // Used only when mimeLayout = "random"
