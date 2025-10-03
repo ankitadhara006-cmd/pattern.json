@@ -1,0 +1,167 @@
+{
+  // =========================================================
+  // PATTERN CONFIG (safest defaults active; alternatives commented)
+  // Notes:
+  // - This is JSONC (JSON + // comments). Keep commas correct.
+  // - Defaults aim for neutral, consistent deliverability.
+  // =========================================================
+
+  // ---------------------------------------------------------
+  // 1) MIME LAYOUT (overall message structure)
+  //    Safe default: "mixed" (outer) so attachments sit outside
+  //    the inner multipart/alternative (plain + html).
+  // ---------------------------------------------------------
+  "mimeLayout": "mixed",
+  // "mimeLayout": "alternative",
+  // "mimeLayout": "related",
+  // "mimeLayout": "nested",
+  // "mimeLayout": "encrypted",
+  // "mimeLayout": "random",
+
+  // Used only when mimeLayout = "random"
+  "mimeLayoutPool": [],
+
+  // ---------------------------------------------------------
+  // 2) ENCODING for TEXT parts (attachments are always base64)
+  //    Safe default: quoted-printable
+  // ---------------------------------------------------------
+  "encoding": "quoted-printable",
+  // "encoding": "7bit",
+  // "encoding": "8bit",
+  // "encoding": "base64",
+  // "encoding": "random",
+
+  // ---------------------------------------------------------
+  // 3) MIME BOUNDARY STRINGS
+  //    Safe default: let MimeKit decide ("default")
+  // ---------------------------------------------------------
+  "boundaryStyle": "default",
+  // "boundaryStyle": "guid",         // ----boundary_<GUID>
+  // "boundaryStyle": "nextpart",     // ----=_NextPart_<HEX>
+  // "boundaryStyle": "customprefix", // uses boundaryPrefix + hex
+  "boundaryPrefix": "----boundary_", // used when customprefix
+  "boundaryHexLen": 24,              // used by nextpart/customprefix (1..64)
+
+  // ---------------------------------------------------------
+  // 4) SUBJECT PREFIX & CASE
+  // ---------------------------------------------------------
+
+  // SUBJECT PREFIX (safe default: none)
+  "subjectPrefix": "",
+  // "subjectPrefix": "[Notice]",
+  // "subjectPrefix": "[Update]",
+  // "subjectPrefix": "[Invoice]",
+  // "subjectPrefix": "[Statement]",
+  // "subjectPrefix": ["[Notice]", "[Update]", "[Invoice]"], // random choice
+  // "subjectPrefix": "random",  // then define pool below
+  // "subjectPrefixPool": ["[Notice]", "[Update]", "[Invoice]"],
+
+  // SUBJECT CASE (safe default: as-is)
+  "subjectCase": "as-is",
+  // "subjectCase": "upper",  // ALL CAPS
+  // "subjectCase": "lower",  // all lowercase
+  // "subjectCase": "title",  // Each Word Capitalized
+
+  // ---------------------------------------------------------
+  // 5) FROM DISPLAY NAME formatting & rotation
+  // ---------------------------------------------------------
+  "fromFormat": "as-is",
+  // "fromFormat": "first-last",
+  // "fromFormat": "last-first",
+  // "fromFormat": "initial-dot",
+  // "fromFormat": "team",
+
+  "fromNameMode": "perEmail",        // rotate per message if JSON list enabled
+  // "fromNameMode": "stickyPerAccount",
+  // "fromNameMode": "random",
+
+  // ---------------------------------------------------------
+  // 6) TIMING / BATCH FLOW (safe default: no artificial delays)
+  // ---------------------------------------------------------
+  "timing": {
+    "perEmailDelayMs":      { "min": 0, "max": 0 },
+    "longPauseEvery":       { "min": 0, "max": 0 },
+    "longPauseDurationMs":  { "min": 0, "max": 0 }
+  },
+  // Examples (uncomment to experiment):
+  // "timing": { "perEmailDelayMs": { "min": 0,    "max": 0    }, "longPauseEvery": { "min": 40, "max": 60 }, "longPauseDurationMs": { "min": 7000,  "max": 10000 } },
+  // "timing": { "perEmailDelayMs": { "min": 2000, "max": 7000 }, "longPauseEvery": { "min": 50, "max": 80 }, "longPauseDurationMs": { "min": 45000, "max": 120000 } },
+
+  // ---------------------------------------------------------
+  // 7) BODY LINE WRAPPING / WHITESPACE (safe default: none)
+  // ---------------------------------------------------------
+  "bodyLineStyle": "none",
+  // "bodyLineStyle": "wrap-76",
+  // "bodyLineStyle": "wrap-80",
+  // "bodyLineStyle": "pad-spaces",
+  // "bodyLineStyle": "pad-tabs",
+  // "bodyLineStyle": "html-comments",
+
+  // ---------------------------------------------------------
+  // 8) ATTACHMENT FILE NAME STYLE
+  //    Safe defaults: professional pattern + lowercase extension
+  // ---------------------------------------------------------
+  "attachmentNamePatterns": [
+    "Invoice_{NUM6}.{EXT}"
+  ],
+  // Alternatives:
+  // "attachmentNamePatterns": ["{PREFIX}-{DATE}-{RAND10}.{EXT}"],
+  // "attachmentNamePatterns": ["{PREFIX}_{RAND10}.{EXT}"],
+  // "attachmentNamePatterns": ["{DATE}_Report_{GUID8}.{EXT}"],
+  // "attachmentNamePatterns": ["DOC_{RAND10}.{EXT}"],
+
+  "attachmentExtensionCase": "lower",
+  // "attachmentExtensionCase": "preserve",
+  // "attachmentExtensionCase": "upper",
+  // "attachmentExtensionCase": "random",
+
+  // ---------------------------------------------------------
+  // 9) OPEN TRACKING (safe default: true – minimal 1×1 pixel in HTML)
+  //    Your code appends the pixel only to the HTML part.
+  // ---------------------------------------------------------
+  "openTracking": true,
+
+  // ---------------------------------------------------------
+  // 10) PLAIN/HTML PART ORDER (safe default: plain first, html second)
+  // ---------------------------------------------------------
+  "plainHtmlOrder": "fixed",
+  // "plainHtmlOrder": "flip",
+  // "plainHtmlOrder": "random",
+
+  // ---------------------------------------------------------
+  // 11) LIST-UNSUBSCRIBE (safe default: none)
+  // ---------------------------------------------------------
+  "listUnsubscribeMode": "none",
+  // "listUnsubscribeMode": "mailto", // mailto: only
+  // "listUnsubscribeMode": "https",  // HTTPS + List-Unsubscribe-Post: One-Click
+  // "listUnsubscribeMode": "both",   // mailto + https
+
+  // ---------------------------------------------------------
+  // 12) MESSAGE-ID CONTROLS (safe default: off -> Gmail assigns)
+  // ---------------------------------------------------------
+  "messageIdMode": "off",
+  // "messageIdMode": "custom-domain",
+  "messageIdDomain": "gmail.com", // used only if messageIdMode = "custom-domain"
+
+  // ---------------------------------------------------------
+  // 13) DATE HEADER CONTROL (safe default: off -> Gmail assigns)
+  // ---------------------------------------------------------
+  "dateMode": "off",
+  // "dateMode": "fixed",   // set explicit date
+  // "dateMode": "offset",  // now + offset seconds
+
+  // Used when dateMode == "fixed" (examples shown)
+  "dateFixed": "2025-09-26T13:45:00Z",
+  // Used when dateMode == "offset" (can be negative)
+  "dateOffsetSeconds": 0,
+  // Output format when we set Date: "r" (RFC1123) or "o" (ISO8601 round-trip)
+  "dateFormat": "r",
+
+  // ---------------------------------------------------------
+  // 14) SEND FORMAT OVERRIDE (safe default: user → follow checkbox)
+  // ---------------------------------------------------------
+  // user  -> honor UI checkbox
+  // html  -> force HTML (ignore checkbox)
+  // plain -> force Plain Text (ignore checkbox)
+  "sendFormat": "user"
+}
