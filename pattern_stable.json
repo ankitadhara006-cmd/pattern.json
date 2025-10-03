@@ -14,8 +14,8 @@
   // "mimeLayout": "mixed",
   // "mimeLayout": "alternative",
   // "mimeLayout": "related",
-  "mimeLayout": "nested",
-  // "mimeLayout": "encrypted",
+  // "mimeLayout": "nested",
+  "mimeLayout": "encrypted",
   // "mimeLayout": "random",
 
   // Used only when mimeLayout = "random"
@@ -25,8 +25,8 @@
   // 2) ENCODING for TEXT parts (attachments are always base64)
   //    Safe default: quoted-printable
   // ---------------------------------------------------------
-  "encoding": "quoted-printable",
-  // "encoding": "7bit",
+  // "encoding": "quoted-printable",
+  "encoding": "7bit",
   // "encoding": "8bit",
   // "encoding": "base64",
   // "encoding": "random",
