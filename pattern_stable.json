@@ -26,8 +26,8 @@
   //    Safe default: quoted-printable
   // ---------------------------------------------------------
   // "encoding": "quoted-printable",
-  "encoding": "7bit",
-  // "encoding": "8bit",
+  // "encoding": "7bit",
+  "encoding": "8bit",
   // "encoding": "base64",
   // "encoding": "random",
 
