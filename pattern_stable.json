@@ -2,7 +2,7 @@
   // =========================================================
   // PATTERN CONFIG (safest defaults active; alternatives commented)
   // Notes:
-  // - This is JSONC (JSON + // comments). Keep commas correct.
+  // - This is JSONC (JSON + // comments). // Keep commas correct.
   // - Defaults aim for neutral, consistent deliverability.
   // =========================================================
 
