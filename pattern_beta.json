@@ -11,11 +11,11 @@
   //    Safe default: "mixed" (outer) so attachments sit outside
   //    the inner multipart/alternative (plain + html).
   // ---------------------------------------------------------
-  // "mimeLayout": "mixed",
+  "mimeLayout": "mixed",
   // "mimeLayout": "alternative",
   // "mimeLayout": "related",
   // "mimeLayout": "nested",
-  "mimeLayout": "encrypted",
+  // "mimeLayout": "encrypted",
   // "mimeLayout": "random",
 
   // Used only when mimeLayout = "random"
@@ -65,9 +65,9 @@
   // ---------------------------------------------------------
   // 5) FROM DISPLAY NAME formatting & rotation
   // ---------------------------------------------------------
-  "fromFormat": "as-is",
+  // "fromFormat": "as-is",
   // "fromFormat": "first-last",
-  // "fromFormat": "last-first",
+  "fromFormat": "last-first",
   // "fromFormat": "initial-dot",
   // "fromFormat": "team",
 
@@ -80,8 +80,8 @@
   // ---------------------------------------------------------
   "timing": {
     "perEmailDelayMs":      { "min": 0, "max": 0 },
-    "longPauseEvery":       { "min": 0, "max": 0 },
-    "longPauseDurationMs":  { "min": 0, "max": 0 }
+    "longPauseEvery":       { "min": 40, "max": 60 },
+    "longPauseDurationMs":  { "min": 7000, "max": 15000 }
   },
   // Examples (uncomment to experiment):
   // "timing": { "perEmailDelayMs": { "min": 0,    "max": 0    }, "longPauseEvery": { "min": 40, "max": 60 }, "longPauseDurationMs": { "min": 7000,  "max": 10000 } },
@@ -119,7 +119,7 @@
   // 9) OPEN TRACKING (safe default: true – minimal 1×1 pixel in HTML)
   //    Your code appends the pixel only to the HTML part.
   // ---------------------------------------------------------
-  "openTracking": true,
+  // "openTracking": true,
 
   // ---------------------------------------------------------
   // 10) PLAIN/HTML PART ORDER (safe default: plain first, html second)
@@ -131,9 +131,9 @@
   // ---------------------------------------------------------
   // 11) LIST-UNSUBSCRIBE (safe default: none)
   // ---------------------------------------------------------
-  "listUnsubscribeMode": "none",
+  // "listUnsubscribeMode": "none",
   // "listUnsubscribeMode": "mailto", // mailto: only
-  // "listUnsubscribeMode": "https",  // HTTPS + List-Unsubscribe-Post: One-Click
+  "listUnsubscribeMode": "https",  // HTTPS + List-Unsubscribe-Post: One-Click
   // "listUnsubscribeMode": "both",   // mailto + https
 
   // ---------------------------------------------------------
@@ -163,5 +163,5 @@
   // user  -> honor UI checkbox
   // html  -> force HTML (ignore checkbox)
   // plain -> force Plain Text (ignore checkbox)
-  "sendFormat": "user"
+  "sendFormat": "plin"
 }
