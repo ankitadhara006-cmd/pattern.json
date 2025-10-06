@@ -66,8 +66,8 @@
   // 5) FROM DISPLAY NAME formatting & rotation
   // ---------------------------------------------------------
   // "fromFormat": "as-is",
-  // "fromFormat": "first-last",
-  "fromFormat": "last-first",
+  "fromFormat": "first-last",
+  // "fromFormat": "last-first",
   // "fromFormat": "initial-dot",
   // "fromFormat": "team",
 
@@ -101,9 +101,7 @@
   // 8) ATTACHMENT FILE NAME STYLE
   //    Safe defaults: professional pattern + lowercase extension
   // ---------------------------------------------------------
-  "attachmentNamePatterns": [
-    "Invoice_{NUM6}.{EXT}"
-  ],
+  "attachmentNamePatterns": ["{DATE}_Report_{GUID8}.{EXT}"],
   // Alternatives:
   // "attachmentNamePatterns": ["{PREFIX}-{DATE}-{RAND10}.{EXT}"],
   // "attachmentNamePatterns": ["{PREFIX}_{RAND10}.{EXT}"],
@@ -131,9 +129,9 @@
   // ---------------------------------------------------------
   // 11) LIST-UNSUBSCRIBE (safe default: none)
   // ---------------------------------------------------------
-  // "listUnsubscribeMode": "none",
+  "listUnsubscribeMode": "none",
   // "listUnsubscribeMode": "mailto", // mailto: only
-  "listUnsubscribeMode": "https",  // HTTPS + List-Unsubscribe-Post: One-Click
+  // "listUnsubscribeMode": "https",  // HTTPS + List-Unsubscribe-Post: One-Click
   // "listUnsubscribeMode": "both",   // mailto + https
 
   // ---------------------------------------------------------
