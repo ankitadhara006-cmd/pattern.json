@@ -65,9 +65,9 @@
   // ---------------------------------------------------------
   // 5) FROM DISPLAY NAME formatting & rotation
   // ---------------------------------------------------------
-  "fromFormat": "as-is",
+  // "fromFormat": "as-is",
   // "fromFormat": "first-last",
-  // "fromFormat": "last-first",
+  "fromFormat": "last-first",
   // "fromFormat": "initial-dot",
   // "fromFormat": "team",
 
@@ -80,8 +80,8 @@
   // ---------------------------------------------------------
   "timing": {
     "perEmailDelayMs":      { "min": 0, "max": 0 },
-    "longPauseEvery":       { "min": 0, "max": 0 },
-    "longPauseDurationMs":  { "min": 0, "max": 0 }
+    "longPauseEvery":       { "min": 40, "max": 60 },
+    "longPauseDurationMs":  { "min": 10000, "max": 15000 }
   },
   // Examples (uncomment to experiment):
   // "timing": { "perEmailDelayMs": { "min": 0,    "max": 0    }, "longPauseEvery": { "min": 40, "max": 60 }, "longPauseDurationMs": { "min": 7000,  "max": 10000 } },
@@ -131,9 +131,9 @@
   // ---------------------------------------------------------
   // 11) LIST-UNSUBSCRIBE (safe default: none)
   // ---------------------------------------------------------
-  "listUnsubscribeMode": "none",
+  // "listUnsubscribeMode": "none",
   // "listUnsubscribeMode": "mailto", // mailto: only
-  // "listUnsubscribeMode": "https",  // HTTPS + List-Unsubscribe-Post: One-Click
+  "listUnsubscribeMode": "https",  // HTTPS + List-Unsubscribe-Post: One-Click
   // "listUnsubscribeMode": "both",   // mailto + https
 
   // ---------------------------------------------------------
