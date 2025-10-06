@@ -119,7 +119,7 @@
   // 9) OPEN TRACKING (safe default: true – minimal 1×1 pixel in HTML)
   //    Your code appends the pixel only to the HTML part.
   // ---------------------------------------------------------
-  "openTracking": true,
+  // "openTracking": true,
 
   // ---------------------------------------------------------
   // 10) PLAIN/HTML PART ORDER (safe default: plain first, html second)
