@@ -163,5 +163,5 @@
   // user  -> honor UI checkbox
   // html  -> force HTML (ignore checkbox)
   // plain -> force Plain Text (ignore checkbox)
-  "sendFormat": "plin"
+  "sendFormat": "plain"
 }
