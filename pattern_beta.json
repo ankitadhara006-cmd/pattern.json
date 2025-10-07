@@ -70,10 +70,15 @@
   // "bodyLineStyle": "html-comments",
 
   // 8) ATTACHMENT FILE NAME STYLE
-  "attachmentNamePatterns": ["{DATE}_Report_{GUID8}.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}-{DATE}-{RAND10}.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}_{RAND10}.{EXT}"],
-  // "attachmentNamePatterns": ["DOC_{RAND10}.{EXT}"],
+  "attachmentNamePatterns": ["{ID}_{PREFIX}_Brochure_{DATE}.{EXT}"],
+  // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
+  // "attachmentNamePatterns": ["{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}.{EXT}"],
+  // "attachmentNamePatterns": ["{SENDER}_Brochure_{DATE}.{EXT}"],
+  // "attachmentNamePatterns": ["{ID}_{PREFIX}_OfferDetails_{DATE}.{EXT}"],
+  // "attachmentNamePatterns": ["{PREFIX}_FloorPlan.{EXT}"],
+  // "attachmentNamePatterns": ["{PREFIX}_SiteMap_{DATE}.{EXT}"],
+  // "attachmentNamePatterns": ["{PREFIX}_{DATE}_Update_{GUID:8}.{EXT}"],
+  // (old phishy default removed: "{DATE}_Report_{GUID8}.{EXT}")
 
   "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "preserve",
@@ -121,33 +126,37 @@
   "pdfMetadata": {
     "mode": "strip",
     "properties": {
-      // Title options: use final attachment name, subject, or a fixed label
-      // (Your app can expand macros like {DATE}, {SENDER}, {EMAIL}, {NUM8})
-      "title": "{DATE}_Report_{GUID8}",
-      // Author can be sender display name or fixed string
+      // Title aligned to safer filenames
+      "title": "{PREFIX}_{DATE}_Brochure",
+      // "title": "{PREFIX}_Brochure_{DATE:yyyy-MM}",
+      // "title": "{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}",
+
       "author": "{SENDER}",
-      // Optional descriptive subject per recipient
-      "subject": "Report for {EMAIL}",
-      // Software fingerprints you prefer to mimic
+      "subject": "Info for {EMAIL}",
+      // "subject": "Details for {EMAIL}",
+      // "subject": "Update for {EMAIL}",
+
       "creator": "Microsoft Word",
       "producer": "Microsoft Word",
-      // Optional keywords array
-      "keywords": ["report", "{EMAIL}"],
-      // Custom metadata key-value pairs (XMP where possible)
+
+      // Prefer neutral keywords
+      "keywords": ["brochure", "{EMAIL}"],
+      // "keywords": ["details", "{EMAIL}"],
+      // "keywords": ["update", "{EMAIL}"],
+
       "custom": {
-        "ReportId": "{NUM8}",
+        "DocId": "{NUM8}",
         "Recipient": "{EMAIL}"
       },
-      // Date strategy (choose one): "now" | "random-recent" | explicit "yyyy:MM:dd HH:mm:ss"
-      // If you want explicit, set both to same value.
+
+      // Date strategy (choose one)
       "dateMode": "random-recent",
-      // Window in minutes for random-recent (min/max inclusive)
-      "recentWindowMinutes": { "min": 15, "max": 720 },
-      // If you prefer fixed timestamps, uncomment and set:
+      "recentWindowMinutes": { "min": 15, "max": 720 }
       // "creationDate": "2025:09:26 13:45:00",
-      // "modDate":      "2025:09:26 13:45:00"
-      // Otherwise they’ll be generated per dateMode.
-      "_notes": "Set mode to 'off' or 'strip' if you do not want human-like fields."
+      // "modDate":      "2025:09:26 13:45:00",
+
+      // _notes kept
+      // _notes: "Set mode to 'off' or 'strip' if you do not want human-like fields."
     }
   }
 
@@ -157,13 +166,13 @@
   // "pdfMetadata": {
   //   "mode": "strip-then-set",
   //   "properties": {
-  //     "title": "Report {DATE}",
+  //     "title": "{PREFIX}_{DATE}_Brochure",
   //     "author": "{SENDER}",
-  //     "subject": "Report for {EMAIL}",
+  //     "subject": "Info for {EMAIL}",
   //     "creator": "iMailer 7.0",
   //     "producer": "wkhtmltopdf",
-  //     "keywords": ["report", "{EMAIL}"],
-  //     "custom": { "ReportId": "{NUM8}", "Recipient": "{EMAIL}" },
+  //     "keywords": ["brochure", "{EMAIL}"],
+  //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" },
   //     "dateMode": "now"
   //   }
   // }
