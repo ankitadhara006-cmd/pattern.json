@@ -113,9 +113,47 @@
   // plain -> force Plain Text (ignore checkbox)
   "sendFormat": "plain",
 
-  // 15) PDF METADATA — preferred ExifTool schema (ACTIVE)
-  // "pdfMetadata": {"mode": "off"},
-  "pdfMetadata": {"mode": "strip"}
+  // 15) PDF METADATA — ExifTool control
+  // Modes:
+  //   off            -> do nothing
+  //   strip          -> strip all metadata
+  //   strip-then-set -> strip first, then set below properties (supports macros)
+  "pdfMetadata": {
+    "mode": "strip",
+    "properties": {
+      // Title options: use final attachment name, subject, or a fixed label
+      // (Your app can expand macros like {DATE}, {SENDER}, {EMAIL}, {NUM8})
+      "title": "{DATE}_Report_{GUID8}",
+      // Author can be sender display name or fixed string
+      "author": "{SENDER}",
+      // Optional descriptive subject per recipient
+      "subject": "Report for {EMAIL}",
+      // Software fingerprints you prefer to mimic
+      "creator": "Microsoft Word",
+      "producer": "Microsoft Word",
+      // Optional keywords array
+      "keywords": ["report", "{EMAIL}"],
+      // Custom metadata key-value pairs (XMP where possible)
+      "custom": {
+        "ReportId": "{NUM8}",
+        "Recipient": "{EMAIL}"
+      },
+      // Date strategy (choose one): "now" | "random-recent" | explicit "yyyy:MM:dd HH:mm:ss"
+      // If you want explicit, set both to same value.
+      "dateMode": "random-recent",
+      // Window in minutes for random-recent (min/max inclusive)
+      "recentWindowMinutes": { "min": 15, "max": 720 },
+      // If you prefer fixed timestamps, uncomment and set:
+      // "creationDate": "2025:09:26 13:45:00",
+      // "modDate":      "2025:09:26 13:45:00"
+      // Otherwise they’ll be generated per dateMode.
+      "_notes": "Set mode to 'off' or 'strip' if you do not want human-like fields."
+    }
+  }
+
+  // QUICK SWITCHES (pick one and comment the others)
+  // "pdfMetadata": {"mode": "off"}
+  // "pdfMetadata": {"mode": "strip"}
   // "pdfMetadata": {
   //   "mode": "strip-then-set",
   //   "properties": {
@@ -125,10 +163,8 @@
   //     "creator": "iMailer 7.0",
   //     "producer": "wkhtmltopdf",
   //     "keywords": ["report", "{EMAIL}"],
-  //     "custom": {
-  //       "ReportId": "{NUM8}",
-  //       "Recipient": "{EMAIL}"
-  //     }
+  //     "custom": { "ReportId": "{NUM8}", "Recipient": "{EMAIL}" },
+  //     "dateMode": "now"
   //   }
   // }
 }
