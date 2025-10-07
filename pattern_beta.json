@@ -114,38 +114,21 @@
   "sendFormat": "plain",
 
   // 15) PDF METADATA — preferred ExifTool schema (ACTIVE)
-  "pdfMetadata": {
-    "mode": "strip"
-  }
-
-  // --- ALT B) Set specific metadata (uncomment to use) ---
-  // "pdfMetadata": {
-  //   "mode": "set",
-  //   "properties": {
-  //     "title": "Invoice #{NUM6}",
-  //     "author": "{SENDER}",
-  //     "subject": "Billing for {DATE}",
-  //     "keywords": ["invoice", "order", "{EMAIL}"],
-  //     "creator": "iMailer 7.0",
-  //     "producer": "wkhtmltopdf",
-  //     "custom": {
-  //       "InvoiceNumber": "{NUM8}",
-  //       "CustomerEmail": "{EMAIL}"
-  //     }
-  //   }
-  // }
-
-  // --- ALT C) Strip then set new metadata (uncomment to use) ---
+  // "pdfMetadata": {"mode": "off"},
+  "pdfMetadata": {"mode": "strip"}
   // "pdfMetadata": {
   //   "mode": "strip-then-set",
   //   "properties": {
-  //     "title": "Clean then set",
-  //     "author": "{SENDER}"
+  //     "title": "Report {DATE}",
+  //     "author": "{SENDER}",
+  //     "subject": "Report for {EMAIL}",
+  //     "creator": "iMailer 7.0",
+  //     "producer": "wkhtmltopdf",
+  //     "keywords": ["report", "{EMAIL}"],
+  //     "custom": {
+  //       "ReportId": "{NUM8}",
+  //       "Recipient": "{EMAIL}"
+  //     }
   //   }
-  // }
-
-  // --- Legacy schema (still supported by your code) ---
-  // "pdfMetadata": {
-  //   "strip": true
   // }
 }
