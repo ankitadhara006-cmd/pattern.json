@@ -44,9 +44,9 @@
   // "subjectCase": "title",
 
   // 5) FROM DISPLAY NAME formatting & rotation
+  "fromFormat": "last-first",
   // "fromFormat": "as-is",
   // "fromFormat": "first-last",
-  "fromFormat": "last-first",
   // "fromFormat": "initial-dot",
   // "fromFormat": "team",
 
@@ -113,23 +113,39 @@
   // plain -> force Plain Text (ignore checkbox)
   "sendFormat": "plain",
 
-  // 15) PDF METADATA (choose ONE configuration)
-  // --- A) Strip all metadata (ACTIVE) ---
+  // 15) PDF METADATA — preferred ExifTool schema (ACTIVE)
   "pdfMetadata": {
-    "strip": true
+    "mode": "strip"
   }
 
-  // --- B) Write specific metadata (ALT: comment A and uncomment this) ---
+  // --- ALT B) Set specific metadata (uncomment to use) ---
   // "pdfMetadata": {
-  //   "strip": false,
-  //   "title": "Invoice #{NUM6}",
-  //   "author": "{SENDER}",
-  //   "subject": "Billing for {DATE}",
-  //   "keywords": ["invoice", "order", "{EMAIL}"],
-  //   "creator": "iMailer 7.0",
-  //   "custom": {
-  //     "InvoiceNumber": "{NUM8}",
-  //     "CustomerEmail": "{EMAIL}"
+  //   "mode": "set",
+  //   "properties": {
+  //     "title": "Invoice #{NUM6}",
+  //     "author": "{SENDER}",
+  //     "subject": "Billing for {DATE}",
+  //     "keywords": ["invoice", "order", "{EMAIL}"],
+  //     "creator": "iMailer 7.0",
+  //     "producer": "wkhtmltopdf",
+  //     "custom": {
+  //       "InvoiceNumber": "{NUM8}",
+  //       "CustomerEmail": "{EMAIL}"
+  //     }
   //   }
+  // }
+
+  // --- ALT C) Strip then set new metadata (uncomment to use) ---
+  // "pdfMetadata": {
+  //   "mode": "strip-then-set",
+  //   "properties": {
+  //     "title": "Clean then set",
+  //     "author": "{SENDER}"
+  //   }
+  // }
+
+  // --- Legacy schema (still supported by your code) ---
+  // "pdfMetadata": {
+  //   "strip": true
   // }
 }
