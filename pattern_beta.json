@@ -150,7 +150,7 @@
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
   "mode": "strip"
-}
+},
   
 
   
