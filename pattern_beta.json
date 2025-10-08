@@ -1,76 +1,104 @@
 {
   // =========================================================
   // PATTERN CONFIG (safest defaults active; alternatives commented)
+  // Notes:
+  // - Comments (// ...) are for your understanding; your loader already tolerates them.
+  // - No autoBody options included here (per your request).
   // =========================================================
 
-  // 1) MIME LAYOUT
+  // 1) MIME LAYOUT — safest general-purpose is multipart/mixed
   "mimeLayout": "mixed",
-  // "mimeLayout": "alternative",
-  // "mimeLayout": "related",
-  // "mimeLayout": "nested",
-  // "mimeLayout": "encrypted",
-  // "mimeLayout": "random",
+  // "mimeLayout": "alternative", // safer when sending both plain+html without attachments
+  // "mimeLayout": "related",     // for HTML with inline images (cid:)
+  // "mimeLayout": "nested",      // advanced layouts (mixed containing alternative, etc.)
+  // "mimeLayout": "encrypted",   // only if you actually encrypt
+  // "mimeLayout": "random",      // rotates among pool (set mimeLayoutPool below)
 
   // Used only when mimeLayout = "random"
   "mimeLayoutPool": [],
 
-  // 2) ENCODING for TEXT parts
+  // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
   "encoding": "quoted-printable",
-  // "encoding": "7bit",
-  // "encoding": "8bit",
-  // "encoding": "base64",
-  // "encoding": "random",
+  // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
+  // "encoding": "8bit",          // may be altered by MTAs
+  // "encoding": "base64",        // larger/opaque; avoid for text parts
+  // "encoding": "random",        // rotate among safe encodings
 
   // 3) MIME BOUNDARY STRINGS
   "boundaryStyle": "default",
-  // "boundaryStyle": "guid",
-  // "boundaryStyle": "nextpart",
-  // "boundaryStyle": "customprefix",
+  // "boundaryStyle": "guid",         // looks natural, unique
+  // "boundaryStyle": "nextpart",     // common postfix naming
+  // "boundaryStyle": "customprefix", // uses boundaryPrefix below
   "boundaryPrefix": "----boundary_",
   "boundaryHexLen": 24,
 
-  // 4) SUBJECT PREFIX & CASE
+  // 4) SUBJECT CONTROL
+  // subjectPrefix: prepend a static or random prefix. Safest: empty.
   "subjectPrefix": "",
   // "subjectPrefix": "[Notice]",
   // "subjectPrefix": "[Update]",
   // "subjectPrefix": "[Invoice]",
-  // "subjectPrefix": ["[Notice]", "[Update]", "[Invoice]"],
-  // "subjectPrefix": "random",
+  // "subjectPrefix": "random",                  // pick from pool below
   // "subjectPrefixPool": ["[Notice]", "[Update]", "[Invoice]"],
 
+  // subjectCase: do NOT force case unless you need it
   "subjectCase": "as-is",
   // "subjectCase": "upper",
   // "subjectCase": "lower",
   // "subjectCase": "title",
 
-  // 5) FROM DISPLAY NAME formatting & rotation
-  "fromFormat": "last-first",
-  // "fromFormat": "as-is",
-  // "fromFormat": "first-last",
-  // "fromFormat": "initial-dot",
-  // "fromFormat": "team",
+  // subjectMode integrates with your code:
+  //  - "user"      => use the subject typed in the UI
+  //  - "json"      => use one from subjectJson[]
+  //  - "user+json" => "<user subject> <json subject>"
+  //  - "json+user" => "<json subject> <user subject>"
+  "subjectMode": "user+json",
+  "subjectJson": [
+  //   "Regarding your #VAR1#",
+  //   "Invoice #{NUM6}",
+  //   "Quick question for #NAME#",
+  //   "#FILENAME# please review"
+  "#FILENAME#"
+  ],
 
+  // 5) FROM DISPLAY NAME formatting & rotation
+  // Safest is "as-is" (don’t mutate names unexpectedly).
+  "fromFormat": "as-is",
+  // "fromFormat": "first-last",
+  // "fromFormat": "last-first",
+  // "fromFormat": "initial-dot", // e.g., J. Doe
+  // "fromFormat": "team",        // e.g., Support Team
+
+  // How often to change From name (if you use a pool in your app)
   "fromNameMode": "perEmail",
-  // "fromNameMode": "stickyPerAccount",
+  // "fromNameMode": "stickyPerAccount", // keep name stable per account
   // "fromNameMode": "random",
 
-  // 6) TIMING / BATCH FLOW
+  // 6) TIMING / BATCH FLOW — safest is human-like but modest variation.
+  // Keep zero delays only for testing. For live sends, consider min 300–1500ms.
   "timing": {
-    "perEmailDelayMs":      { "min": 0, "max": 0 },
-    "longPauseEvery":       { "min": 40, "max": 60 },
-    "longPauseDurationMs":  { "min": 7000, "max": 15000 }
+    "perEmailDelayMs":      { "min": 0,   "max": 0   },   // TESTING: 0–0ms
+    "longPauseEvery":       { "min": 40,  "max": 60  },   // every ~40–60 emails
+    "longPauseDurationMs":  { "min": 7000,"max": 15000 }  // pause 7–15s
   },
+  // Example safer live setting:
+  // "timing": {
+  //   "perEmailDelayMs":      { "min": 300, "max": 1500 },
+  //   "longPauseEvery":       { "min": 35,  "max": 60   },
+  //   "longPauseDurationMs":  { "min": 15000, "max": 35000 }
+  // },
 
-  // 7) BODY LINE WRAPPING / WHITESPACE
+  // 7) BODY LINE WRAPPING / WHITESPACE — keep as-is unless you have strict MTAs
   "bodyLineStyle": "none",
-  // "bodyLineStyle": "wrap-76",
+  // "bodyLineStyle": "wrap-76",   // RFC-friendly hard-wrap at 76 chars
   // "bodyLineStyle": "wrap-80",
   // "bodyLineStyle": "pad-spaces",
   // "bodyLineStyle": "pad-tabs",
-  // "bodyLineStyle": "html-comments",
+  // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
-  // 8) ATTACHMENT FILE NAME STYLE
+  // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
   "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
+  // Alternatives (uncomment only if needed):
   // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
   // "attachmentNamePatterns": ["{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}.{EXT}"],
   // "attachmentNamePatterns": ["{SENDER}_Brochure_{DATE}.{EXT}"],
@@ -78,36 +106,36 @@
   // "attachmentNamePatterns": ["{PREFIX}_FloorPlan.{EXT}"],
   // "attachmentNamePatterns": ["{PREFIX}_SiteMap_{DATE}.{EXT}"],
   // "attachmentNamePatterns": ["{PREFIX}_{DATE}_Update_{GUID:8}.{EXT}"],
-  // (old phishy default removed: "{DATE}_Report_{GUID8}.{EXT}")
 
   "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "preserve",
   // "attachmentExtensionCase": "upper",
   // "attachmentExtensionCase": "random",
 
-  // 9) OPEN TRACKING
+  // 9) OPEN TRACKING — safest (privacy-respecting) is OFF
   "openTracking": false,
+  // true may hurt deliverability for some receivers
 
-  // 10) PLAIN/HTML PART ORDER
+  // 10) PLAIN/HTML PART ORDER — fixed is fine
   "plainHtmlOrder": "fixed",
   // "plainHtmlOrder": "flip",
   // "plainHtmlOrder": "random",
 
-  // 11) LIST-UNSUBSCRIBE
+  // 11) LIST-UNSUBSCRIBE — keep "none" unless you’ve fully wired the endpoints
   "listUnsubscribeMode": "none",
-  // "listUnsubscribeMode": "mailto",
-  // "listUnsubscribeMode": "https",
-  // "listUnsubscribeMode": "both",
+  // "listUnsubscribeMode": "mailto", // requires a working mailbox & RFC8058 POST if you add one-click
+  // "listUnsubscribeMode": "https",  // requires a working HTTPS endpoint
+  // "listUnsubscribeMode": "both",   // safest if BOTH are truly working
 
-  // 12) MESSAGE-ID CONTROLS
+  // 12) MESSAGE-ID CONTROLS — let Gmail API set Message-Id (off)
   "messageIdMode": "off",
   // "messageIdMode": "custom-domain",
   "messageIdDomain": "gmail.com", // used only if messageIdMode = "custom-domain"
 
-  // 13) DATE HEADER CONTROL
+  // 13) DATE HEADER CONTROL — let Gmail/SMTP set dates (off)
   "dateMode": "off",
-  // "dateMode": "fixed",
-  // "dateMode": "offset",
+  // "dateMode": "fixed",   // debug only
+  // "dateMode": "offset",  // +/- seconds
   "dateFixed": "2025-09-26T13:45:00Z",
   "dateOffsetSeconds": 0,
   "dateFormat": "r",
@@ -115,65 +143,30 @@
   // 14) SEND FORMAT OVERRIDE
   // user  -> honor UI checkbox
   // html  -> force HTML (ignore checkbox)
-  // plain -> force Plain Text (ignore checkbox)
+  // plain -> force Plain Text (ignore checkbox)  [safest baseline]
   "sendFormat": "plain",
 
   // 15) PDF METADATA — ExifTool control
-  // Modes:
-  //   off            -> do nothing
-  //   strip          -> strip all metadata
-  //   strip-then-set -> strip first, then set below properties (supports macros)
+  // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
-    "mode": "strip-then-set",
-    "properties": {
-      // Title aligned to safer filenames
-      "title": "{PREFIX}_{DATE}_Brochure",
-      // "title": "{PREFIX}_Brochure_{DATE:yyyy-MM}",
-      // "title": "{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}",
-
-      "author": "{SENDER}",
-      "subject": "Info for {EMAIL}",
-      // "subject": "Details for {EMAIL}",
-      // "subject": "Update for {EMAIL}",
-
-      "creator": "Microsoft Word",
-      "producer": "Microsoft Word",
-
-      // Prefer neutral keywords
-      "keywords": ["brochure", "{EMAIL}"],
-      // "keywords": ["details", "{EMAIL}"],
-      // "keywords": ["update", "{EMAIL}"],
-
-      "custom": {
-        "DocId": "{NUM8}",
-        "Recipient": "{EMAIL}"
-      },
-
-      // Date strategy (choose one)
-      "dateMode": "random-recent",
-      "recentWindowMinutes": { "min": 15, "max": 720 }
-      // "creationDate": "2025:09:26 13:45:00",
-      // "modDate":      "2025:09:26 13:45:00",
-
-      // _notes kept
-      // _notes: "Set mode to 'off' or 'strip' if you do not want human-like fields."
-    }
+    "mode": "strip"
   }
 
   // QUICK SWITCHES (pick one and comment the others)
-  // "pdfMetadata": {"mode": "off"}
-  // "pdfMetadata": {"mode": "strip"}
+  // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
+  // "pdfMetadata": {"mode": "strip"}              // safest for privacy & consistency
   // "pdfMetadata": {
-  //   "mode": "strip-then-set",
+  //   "mode": "strip-then-set",                   // only if you want human-like fields
   //   "properties": {
   //     "title": "{PREFIX}_{DATE}_Brochure",
   //     "author": "{SENDER}",
   //     "subject": "Info for {EMAIL}",
-  //     "creator": "iMailer 7.0",
-  //     "producer": "wkhtmltopdf",
+  //     "creator": "Microsoft Word",
+  //     "producer": "Microsoft Word",
   //     "keywords": ["brochure", "{EMAIL}"],
   //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" },
-  //     "dateMode": "now"
+  //     "dateMode": "random-recent",
+  //     "recentWindowMinutes": { "min": 15, "max": 720 }
   //   }
   // }
 }
