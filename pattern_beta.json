@@ -2,7 +2,7 @@
   // =========================================================
   // PATTERN CONFIG (safest defaults active; alternatives commented)
   // Notes:
-  // - Comments (// ...) are for your understanding; your loader already tolerates them.
+  // - Comments (// ...) are tolerated by your loader.
   // - No autoBody options included here (per your request).
   // =========================================================
 
@@ -20,7 +20,7 @@
   // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
   // "encoding": "quoted-printable",
   // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
-  "encoding": "8bit",          // may be altered by MTAs
+  "encoding": "8bit",             // may be altered by MTAs
   // "encoding": "base64",        // larger/opaque; avoid for text parts
   // "encoding": "random",        // rotate among safe encodings
 
@@ -33,7 +33,6 @@
   "boundaryHexLen": 24,
 
   // 4) SUBJECT CONTROL
-  // subjectPrefix: prepend a static or random prefix. Safest: empty.
   "subjectPrefix": "",
   // "subjectPrefix": "[Notice]",
   // "subjectPrefix": "[Update]",
@@ -54,15 +53,14 @@
   //  - "json+user" => "<json subject> <user subject>"
   "subjectMode": "user",
   "subjectJson": [
-  //   "Regarding your #VAR1#",
-  //   "Invoice #{NUM6}",
-  //   "Quick question for #NAME#",
-  //   "#FILENAME# please review"
-  "#FILENAME#"
+    // "Regarding your #VAR1#",
+    // "Invoice #{NUM6}",
+    // "Quick question for #NAME#",
+    // "#FILENAME# please review"
+    "#FILENAME#"
   ],
 
   // 5) FROM DISPLAY NAME formatting & rotation
-  // Safest is "as-is" (don’t mutate names unexpectedly).
   "fromFormat": "as-is",
   // "fromFormat": "first-last",
   // "fromFormat": "last-first",
@@ -149,25 +147,24 @@
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
-  "mode": "strip"
-},
-  
+    "mode": "strip"
+  }
 
-  
-  // QUICK SWITCHES (pick one and comment the others)
+  // -------- QUICK SWITCHES (examples; keep commented) --------
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
   // "pdfMetadata": {"mode": "strip"}              // safest for privacy & consistency
   // "pdfMetadata": {
   //   "mode": "strip-then-set",                   // only if you want human-like fields
   //   "properties": {
-  //     "title": "Microsoft Word - ServiceReport",
+  //     "titleMode": "fixed",
+  //     "titleFixed": "Microsoft Word - ServiceReport",
   //     "author": "{SENDER}",
   //     "subject": "Info for {EMAIL}",
   //     "creator": "Microsoft Word",
   //     "producer": "Microsoft: Print To PDF",
   //     "keywords": ["brochure", "{EMAIL}"],
   //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" },
-  // "dateMode": "now",
+  //     "dateMode": "now",
   //     "recentWindowMinutes": { "min": 15, "max": 720 }
   //   }
   // }
