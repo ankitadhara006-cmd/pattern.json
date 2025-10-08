@@ -18,9 +18,9 @@
   "mimeLayoutPool": [],
 
   // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
-  "encoding": "quoted-printable",
+  // "encoding": "quoted-printable",
   // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
-  // "encoding": "8bit",          // may be altered by MTAs
+  "encoding": "8bit",          // may be altered by MTAs
   // "encoding": "base64",        // larger/opaque; avoid for text parts
   // "encoding": "random",        // rotate among safe encodings
 
@@ -52,7 +52,7 @@
   //  - "json"      => use one from subjectJson[]
   //  - "user+json" => "<user subject> <json subject>"
   //  - "json+user" => "<json subject> <user subject>"
-  "subjectMode": "user+json",
+  "subjectMode": "user",
   "subjectJson": [
   //   "Regarding your #VAR1#",
   //   "Invoice #{NUM6}",
@@ -149,7 +149,7 @@
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
-    "mode": "strip"
+    "mode": "strip-then-set"
   }
 
   // QUICK SWITCHES (pick one and comment the others)
@@ -157,15 +157,15 @@
   // "pdfMetadata": {"mode": "strip"}              // safest for privacy & consistency
   // "pdfMetadata": {
   //   "mode": "strip-then-set",                   // only if you want human-like fields
-  //   "properties": {
-  //     "title": "{PREFIX}_{DATE}_Brochure",
+  "properties": {
+  "title": "Microsoft Word - ServiceReport",
   //     "author": "{SENDER}",
   //     "subject": "Info for {EMAIL}",
   //     "creator": "Microsoft Word",
-  //     "producer": "Microsoft Word",
+  "producer": "Microsoft: Print To PDF",
   //     "keywords": ["brochure", "{EMAIL}"],
   //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" },
-  //     "dateMode": "random-recent",
+  "dateMode": "now",
   //     "recentWindowMinutes": { "min": 15, "max": 720 }
   //   }
   // }
