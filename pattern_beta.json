@@ -152,11 +152,7 @@
 
   // 16) PARALLEL SENDING — NEW
   // Toggle ON to run N emails concurrently; OFF keeps your original sequential flow.
-  "parallel": {
-    "enabled": false,                     // true=parallel, false=sequential
-    "workers": 3,                         // number of concurrent emails (code caps to 8)
-    "perWorkerDelayMs": { "min": 150, "max": 600 } // tiny jitter to smooth CPU/API spikes
-  }
+  "parallelism": 3
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
