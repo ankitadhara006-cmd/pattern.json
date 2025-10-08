@@ -151,8 +151,8 @@
   "pdfMetadata": {
   "mode": "strip-then-set",
   "properties": {
-    "titleMode": "fixed",
-    "titleFixed": "Microsoft Word - ServiceReport",
+    // "titleMode": "fixed",
+    // "titleFixed": "Microsoft Word - ServiceReport",
     "producer": "Microsoft: Print To PDF",
     "dateMode": "now"
   }
