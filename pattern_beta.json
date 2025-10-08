@@ -124,7 +124,7 @@
   //   strip          -> strip all metadata
   //   strip-then-set -> strip first, then set below properties (supports macros)
   "pdfMetadata": {
-    "mode": "strip",
+    "mode": "strip-then-set",
     "properties": {
       // Title aligned to safer filenames
       "title": "{PREFIX}_{DATE}_Brochure",
