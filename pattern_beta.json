@@ -149,13 +149,14 @@
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
-  "mode": "strip-then-set",                   // only if you want human-like fields
+  "mode": "strip-then-set",
   "properties": {
-  "title": "Microsoft Word - ServiceReport",
-  "producer": "Microsoft: Print To PDF",
-  "dateMode": "now",
+    "titleMode": "fixed",
+    "titleFixed": "Microsoft Word - ServiceReport",
+    "producer": "Microsoft: Print To PDF",
+    "dateMode": "now"
   }
-  }
+}
   
   // QUICK SWITCHES (pick one and comment the others)
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
