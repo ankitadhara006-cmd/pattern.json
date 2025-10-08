@@ -70,7 +70,7 @@
   // "bodyLineStyle": "html-comments",
 
   // 8) ATTACHMENT FILE NAME STYLE
-  "attachmentNamePatterns": ["{ID}_{PREFIX}_Brochure_{DATE}.{EXT}"],
+  "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
   // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
   // "attachmentNamePatterns": ["{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}.{EXT}"],
   // "attachmentNamePatterns": ["{SENDER}_Brochure_{DATE}.{EXT}"],
