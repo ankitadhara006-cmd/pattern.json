@@ -148,7 +148,7 @@
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
     "mode": "strip"
-  }
+  },
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
@@ -168,4 +168,10 @@
   //     "recentWindowMinutes": { "min": 15, "max": 720 }
   //   }
   // }
+  "parallel": {
+  "enabled": false,                         // OFF = use your existing sequential SendEmails()
+  "workers": 3,                             // when enabled: how many at a time (cap is 8 in code)
+  "perWorkerDelayMs": { "min": 150, "max": 600 }   // tiny jitter to smooth CPU/API
+  }
+
 }
