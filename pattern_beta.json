@@ -155,8 +155,6 @@
     "producer": "Microsoft: Print To PDF",
     "titleMode": "filename",
     "dateMode": "now"
-    "dateTimezone": "local",
-    "datePrecision": "seconds"
   }
 },
   "parallelism": 4
