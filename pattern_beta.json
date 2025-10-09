@@ -150,6 +150,7 @@
   "pdfMetadata": {
   "mode": "strip_human",
   "properties": {
+    "author": "",
     "creator": "Microsoft Word",
     "producer": "Microsoft: Print To PDF",
     "titleMode": "filename",
