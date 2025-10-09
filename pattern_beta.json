@@ -149,16 +149,14 @@
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
   "mode": "strip-then-set",
-  "apply": ["CreationDate","ModDate","Title","Author","Producer","Creator"],
   "properties": {
-    "author": " ",                       // single space to FORCE the field to exist
+    "authorMode": "fixed",
+    "authorFixed": " ", 
     "creator": "Microsoft Word",
     "producer": "Microsoft: Print To PDF",
     "titleMode": "fixed",
     "titleFixed": "Microsoft Word - Document",
-    "dateMode": "now",
-    "dateTimezone": "local",             // gives D:YYYYMMDDHHmmSS+05'30'
-    "datePrecision": "seconds"
+    "dateMode": "now"
   }
 },
   "parallelism": 4
