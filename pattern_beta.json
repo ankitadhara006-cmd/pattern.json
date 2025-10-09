@@ -154,11 +154,9 @@
       "producer": "Microsoft: Print To PDF",
       "authorMode": "fixed",
       "authorFixed": "Microsoft Word",
-      "titleMode": "fixed",
-      "titleFixed": "Microsoft Word - Document1",
-      "dateMode": "fixed",
-      "dateFixed": "2025-10-09T17:52:53+05:30"
-    }
+      "titleMode": "filename",
+      "dateMode": "now"
+      }
   },
   "parallelism": 3
 
