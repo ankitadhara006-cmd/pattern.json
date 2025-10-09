@@ -150,10 +150,11 @@
   "pdfMetadata": {
   "mode": "strip-then-set",
   "properties": {
-    "author": "{SENDER}",
-    "creator": "Microsoft Word",
+    "author": "",
+    "dateMode": "now",
     "producer": "Microsoft: Print To PDF",
-    "titleMode": "filename",
+    "titleMode": "fixed",
+    "titleFixed": "Microsoft Word - Document",
     "dateMode": "now",
   }
 },
