@@ -147,8 +147,14 @@
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
-    "mode": "strip"
-  },
+     "mode": "strip-then-set",                   // only if you want human-like fields
+  "properties": {
+  "titleMode": "fixed",
+  "titleFixed": "Microsoft Word - ServiceReport",
+ 
+  "producer": "Microsoft: Print To PDF",
+     }
+  }
 
   // 16) PARALLEL SENDING — NEW
   // Toggle ON to run N emails concurrently; OFF keeps your original sequential flow.
