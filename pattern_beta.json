@@ -150,13 +150,13 @@
   "pdfMetadata": {
   "mode": "strip_human",
   "properties": {
-    "author": "",
+    "author": "{SENDER}",
     "creator": "Microsoft Word",
     "producer": "Microsoft: Print To PDF",
     "titleMode": "filename",
-    "dateMode": "now",
-    "dateTimezone": "local",         // << NEW: use local zone, not UTC (no trailing Z)
-    "datePrecision": "seconds"       // optional, keeps D:YYYYMMDDHHmmSS+05'30'
+    "dateMode": "now"
+    "dateTimezone": "local",
+    "datePrecision": "seconds"
   }
 },
   "parallelism": 4
