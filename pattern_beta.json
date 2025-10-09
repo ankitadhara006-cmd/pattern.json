@@ -148,7 +148,17 @@
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
-    "mode": "strip"
+    "mode": "strip_human",
+    "properties": {
+      "creator": "Microsoft Word",
+      "producer": "Microsoft: Print To PDF",
+      "authorMode": "fixed",
+      "authorFixed": "Microsoft Word",
+      "titleMode": "fixed",
+      "titleFixed": "Microsoft Word - Document1",
+      "dateMode": "fixed",
+      "dateFixed": "2025-10-09T17:52:53+05:30"
+    }
   },
   "parallelism": 3
 
