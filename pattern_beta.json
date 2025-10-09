@@ -158,7 +158,7 @@
       "dateMode": "now"
       }
   },
-  "parallelism": 3
+  "parallelism": 4
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
