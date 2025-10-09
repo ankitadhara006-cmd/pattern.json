@@ -148,7 +148,7 @@
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {"mode": "off"},
-  "parallelism": 4
+  "parallelism": 1
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
