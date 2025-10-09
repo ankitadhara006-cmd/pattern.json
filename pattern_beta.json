@@ -53,10 +53,6 @@
   //  - "json+user" => "<json subject> <user subject>"
   "subjectMode": "user",
   "subjectJson": [
-    // "Regarding your #VAR1#",
-    // "Invoice #{NUM6}",
-    // "Quick question for #NAME#",
-    // "#FILENAME# please review"
     "#FILENAME#"
   ],
 
@@ -147,13 +143,13 @@
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
-     "mode": "strip-then-set",
-  "properties": {
-  "titleMode": "fixed",
-  "titleFixed": "Microsoft Word - ServiceReport", 
-  "producer": "Microsoft: Print To PDF",
-     }
-  }
+    "mode": "strip-then-set",
+    "properties": {
+      "titleMode": "fixed",
+      "titleFixed": "Microsoft Word - ServiceReport",
+      "producer": "Microsoft: Print To PDF"
+    }
+  },
 
   // 16) PARALLEL SENDING — NEW
   // Toggle ON to run N emails concurrently; OFF keeps your original sequential flow.
