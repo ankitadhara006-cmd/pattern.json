@@ -155,7 +155,6 @@
     "producer": "Microsoft: Print To PDF",
     "titleMode": "fixed",
     "titleFixed": "Microsoft Word - Document",
-    "dateMode": "now",
   }
 },
   "parallelism": 4
