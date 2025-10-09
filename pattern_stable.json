@@ -95,7 +95,8 @@
   // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
-  "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
+  "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE:ddMMMyy_HH-mm-ss}.{EXT}"],
+  // "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
   // Alternatives (uncomment only if needed):
   // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
   // "attachmentNamePatterns": ["{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}.{EXT}"],
@@ -148,7 +149,8 @@
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
   "pdfMetadata": {
     "mode": "strip"
-  }
+  },
+  "parallelism": 3
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
