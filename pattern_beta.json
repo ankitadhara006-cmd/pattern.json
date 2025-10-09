@@ -41,13 +41,8 @@
   "sendFormat": "plain",
 
   "pdfMetadata": {
-    "mode": "stripThenSet",
-    "properties": {
-      "titleMode": "fixed",
-      "titleFixed": "Microsoft Word - ServiceReport",
-      "producer": "Microsoft: Print To PDF"
-    }
-  },
+    "mode": "strip",
+   },
 
   "parallelism": 3
 }
