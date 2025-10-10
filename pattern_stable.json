@@ -121,8 +121,8 @@
   // "plainHtmlOrder": "random",
 
   // 11) LIST-UNSUBSCRIBE — keep "none" unless you’ve fully wired the endpoints
-  "listUnsubscribeMode": "none",
-  // "listUnsubscribeMode": "mailto", // requires a working mailbox & RFC8058 POST if you add one-click
+  // "listUnsubscribeMode": "none",
+  "listUnsubscribeMode": "mailto", // requires a working mailbox & RFC8058 POST if you add one-click
   // "listUnsubscribeMode": "https",  // requires a working HTTPS endpoint
   // "listUnsubscribeMode": "both",   // safest if BOTH are truly working
 
@@ -147,8 +147,8 @@
 
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
-  "pdfMetadata": {"mode": "off"},
-  "parallelism": 1
+  "pdfMetadata": {"mode": "strip"},
+  "parallelism": 4
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
   // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
