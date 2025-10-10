@@ -20,8 +20,8 @@
   // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
   // "encoding": "quoted-printable",
   // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
-  // "encoding": "8bit",             // may be altered by MTAs
-  "encoding": "base64",        // larger/opaque; avoid for text parts
+  "encoding": "8bit",             // may be altered by MTAs
+  // "encoding": "base64",        // larger/opaque; avoid for text parts
   // "encoding": "random",        // rotate among safe encodings
 
   // 3) MIME BOUNDARY STRINGS
@@ -121,8 +121,8 @@
   // "plainHtmlOrder": "random",
 
   // 11) LIST-UNSUBSCRIBE — keep "none" unless you’ve fully wired the endpoints
-  "listUnsubscribeMode": "none",
-  // "listUnsubscribeMode": "mailto", // requires a working mailbox & RFC8058 POST if you add one-click
+  // "listUnsubscribeMode": "none",
+  "listUnsubscribeMode": "mailto", // requires a working mailbox & RFC8058 POST if you add one-click
   // "listUnsubscribeMode": "https",  // requires a working HTTPS endpoint
   // "listUnsubscribeMode": "both",   // safest if BOTH are truly working
 
