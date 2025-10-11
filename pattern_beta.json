@@ -124,7 +124,7 @@
   // "listUnsubscribeMode": "none",
   // "listUnsubscribeMode": "mailto", // requires a working mailbox & RFC8058 POST if you add one-click
   // "listUnsubscribeMode": "https",  // requires a working HTTPS endpoint
-  // "listUnsubscribeMode": "both",   // safest if BOTH are truly working
+  "listUnsubscribeMode": "both",   // safest if BOTH are truly working
 
   // 12) MESSAGE-ID CONTROLS — let Gmail API set Message-Id (off)
   "messageIdMode": "off",
