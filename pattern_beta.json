@@ -18,9 +18,9 @@
   "mimeLayoutPool": [],
 
   // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
-  "encoding": "quoted-printable",
+  // "encoding": "quoted-printable",
   // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
-  // "encoding": "8bit",             // may be altered by MTAs
+  "encoding": "8bit",             // may be altered by MTAs
   // "encoding": "base64",        // larger/opaque; avoid for text parts
   // "encoding": "random",        // rotate among safe encodings
 
@@ -147,7 +147,14 @@
 
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
-  "pdfMetadata": {"mode": "off"},
+  "pdfMetadata": {
+    "mode": "strip-then-set",
+    "titleMode": "fixed",
+    "titleFixed": "Microsoft Word - Documet1",
+    "author": "{SENDER}",
+    "producer": "Microsoft: Print To PDF",
+    dateMode": "now"
+  }
   "parallelism": 4
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
