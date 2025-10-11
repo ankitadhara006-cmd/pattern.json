@@ -153,8 +153,9 @@
     "titleFixed": "Microsoft Word - Documet1",
     "author": "{SENDER}",
     "producer": "Microsoft: Print To PDF",
-    dateMode": "now"
-  }
+    "dateMode": "now"
+  },
+
   "parallelism": 4
 
   // -------- QUICK SWITCHES (examples; keep commented) --------
