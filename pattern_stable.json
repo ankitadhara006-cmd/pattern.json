@@ -18,9 +18,9 @@
   "mimeLayoutPool": [],
 
   // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
-  // "encoding": "quoted-printable",
+  "encoding": "quoted-printable",
   // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
-  "encoding": "8bit",             // may be altered by MTAs
+  // "encoding": "8bit",             // may be altered by MTAs
   // "encoding": "base64",        // larger/opaque; avoid for text parts
   // "encoding": "random",        // rotate among safe encodings
 
@@ -116,7 +116,7 @@
   // true may hurt deliverability for some receivers
 
   // 10) PLAIN/HTML PART ORDER — fixed is fine
-  "plainHtmlOrder": "fixed",
+  "plainHtmlOrder": "flip",
   // "plainHtmlOrder": "flip",
   // "plainHtmlOrder": "random",
 
