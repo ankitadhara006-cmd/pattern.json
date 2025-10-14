@@ -143,7 +143,7 @@
   // user  -> honor UI checkbox
   // html  -> force HTML (ignore checkbox)
   // plain -> force Plain Text (ignore checkbox)  [safest baseline]
-  "sendFormat": "plain",
+  "sendFormat": "html",
 
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
