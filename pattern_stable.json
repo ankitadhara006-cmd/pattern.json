@@ -95,7 +95,7 @@
   // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
-  "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
+  "attachmentNamePatterns": ["{ID}_ReportofService_{DATE}.{EXT}"],
   // "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
   // Alternatives (uncomment only if needed):
   // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
@@ -143,7 +143,7 @@
   // user  -> honor UI checkbox
   // html  -> force HTML (ignore checkbox)
   // plain -> force Plain Text (ignore checkbox)  [safest baseline]
-  "sendFormat": "plain",
+  "sendFormat": "html",
 
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
