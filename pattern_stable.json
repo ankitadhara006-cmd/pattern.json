@@ -95,7 +95,7 @@
   // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
-  "attachmentNamePatterns": ["{ID}_ReportofService_{DATE}.{EXT}"],
+  "attachmentNamePatterns": ["{PREFIX}_{DATE}_Update_{GUID:8}.{EXT}"],
   // "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
   // Alternatives (uncomment only if needed):
   // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
