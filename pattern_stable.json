@@ -41,7 +41,7 @@
   // "subjectPrefixPool": ["[Notice]", "[Update]", "[Invoice]"],
 
   // subjectCase: do NOT force case unless you need it
-  "subjectCase": "title",
+  "subjectCase": "as-is",
   // "subjectCase": "upper",
   // "subjectCase": "lower",
   // "subjectCase": "title",
