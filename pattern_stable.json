@@ -89,7 +89,7 @@
   // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
-  "attachmentNamePatterns": ["{ID}_GEEK_ORDER_RECEIPT_{DATE}.{EXT}"],
+  "attachmentNamePatterns": ["{ID}_Maintenance Record_{DATE}.{EXT}"],
 
   "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "preserve",
