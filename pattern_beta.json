@@ -51,7 +51,7 @@
   //  - "json"      => use one from subjectJson[]
   //  - "user+json" => "<user subject> <json subject>"
   //  - "json+user" => "<json subject> <user subject>"
-  "subjectMode": "user+json",
+  "subjectMode": "user",
   "subjectJson": ["issued by #SENDER#"],
 
   // 5) FROM DISPLAY NAME formatting & rotation
@@ -132,9 +132,9 @@
 
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
-  "pdfMetadata": {"mode": "strip"} ,
+  "pdfMetadata": {"mode": "off"} ,
 
-  "parallelism": 4,
+  "parallelism": 1,
   "classicMode": true
 
 }
