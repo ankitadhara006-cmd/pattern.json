@@ -25,7 +25,7 @@
   // "encoding": "random",        // rotate among safe encodings
 
   // 3) MIME BOUNDARY STRINGS
-  "boundaryStyle": "default",
+  // "boundaryStyle": "default",
   // "boundaryStyle": "guid",         // looks natural, unique
   "boundaryStyle": "nextpart",     // common postfix naming
   // "boundaryStyle": "customprefix", // uses boundaryPrefix below
