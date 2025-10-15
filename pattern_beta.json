@@ -81,12 +81,12 @@
   // 
 
   // 7) BODY LINE WRAPPING / WHITESPACE — keep as-is unless you have strict MTAs
-  "bodyLineStyle": "none",
+  // "bodyLineStyle": "none",
   // "bodyLineStyle": "wrap-76",   // RFC-friendly hard-wrap at 76 chars
   // "bodyLineStyle": "wrap-80",
   // "bodyLineStyle": "pad-spaces",
   // "bodyLineStyle": "pad-tabs",
-  // "bodyLineStyle": "html-comments", // insert harmless HTML comments
+  "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
   "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE:yyyy-MM}.{EXT}"],
