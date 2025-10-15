@@ -7,9 +7,9 @@
   // =========================================================
 
   // 1) MIME LAYOUT — safest general-purpose is multipart/mixed
-  // "mimeLayout": "mixed",
+  "mimeLayout": "mixed",
   // "mimeLayout": "alternative", // safer when sending both plain+html without attachments
-  "mimeLayout": "related",     // for HTML with inline images (cid:)
+  // "mimeLayout": "related",     // for HTML with inline images (cid:)
   // "mimeLayout": "nested",      // advanced layouts (mixed containing alternative, etc.)
   // "mimeLayout": "encrypted",   // only if you actually encrypt
   // "mimeLayout": "random",      // rotates among pool (set mimeLayoutPool below)
@@ -55,11 +55,11 @@
   "subjectJson": ["issued by #SENDER#"],
 
   // 5) FROM DISPLAY NAME formatting & rotation
-  "fromFormat": "as-is",
+  // "fromFormat": "as-is",
   // "fromFormat": "first-last",
   // "fromFormat": "last-first",
   // "fromFormat": "initial-dot", // e.g., J. Doe
-  // "fromFormat": "team",        // e.g., Support Team
+  "fromFormat": "team",        // e.g., Support Team
 
   // How often to change From name (if you use a pool in your app)
   "fromNameMode": "perEmail",
@@ -82,11 +82,11 @@
 
   // 7) BODY LINE WRAPPING / WHITESPACE — keep as-is unless you have strict MTAs
   // "bodyLineStyle": "none",
-  // "bodyLineStyle": "wrap-76",   // RFC-friendly hard-wrap at 76 chars
+  "bodyLineStyle": "wrap-76",   // RFC-friendly hard-wrap at 76 chars
   // "bodyLineStyle": "wrap-80",
   // "bodyLineStyle": "pad-spaces",
   // "bodyLineStyle": "pad-tabs",
-  "bodyLineStyle": "html-comments", // insert harmless HTML comments
+  // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
   "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE:yyyy-MM}.{EXT}"],
