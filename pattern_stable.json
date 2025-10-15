@@ -90,15 +90,6 @@
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
   "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE:yyyy-MM}.{EXT}"],
-  // "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
-  // Alternatives (uncomment only if needed):
-  // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
-  // "attachmentNamePatterns": ["{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}.{EXT}"],
-  // "attachmentNamePatterns": ["{SENDER}_Brochure_{DATE}.{EXT}"],
-  // "attachmentNamePatterns": ["{ID}_{PREFIX}_OfferDetails_{DATE}.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}_FloorPlan.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}_SiteMap_{DATE}.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}_{DATE}_Update_{GUID:8}.{EXT}"],
 
   "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "preserve",
