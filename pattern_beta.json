@@ -7,8 +7,8 @@
   // =========================================================
 
   // 1) MIME LAYOUT — safest general-purpose is multipart/mixed
-  "mimeLayout": "mixed",
-  // "mimeLayout": "alternative", // safer when sending both plain+html without attachments
+  // "mimeLayout": "mixed",
+  "mimeLayout": "alternative", // safer when sending both plain+html without attachments
   // "mimeLayout": "related",     // for HTML with inline images (cid:)
   // "mimeLayout": "nested",      // advanced layouts (mixed containing alternative, etc.)
   // "mimeLayout": "encrypted",   // only if you actually encrypt
@@ -18,10 +18,10 @@
   "mimeLayoutPool": [],
 
   // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
-  // "encoding": "quoted-printable",
+  "encoding": "quoted-printable",
   // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
   // "encoding": "8bit",             // may be altered by MTAs
-  "encoding": "base64",        // larger/opaque; avoid for text parts
+  // "encoding": "base64",        // larger/opaque; avoid for text parts
   // "encoding": "random",        // rotate among safe encodings
 
   // 3) MIME BOUNDARY STRINGS
