@@ -41,7 +41,7 @@
   // "subjectPrefixPool": ["[Notice]", "[Update]", "[Invoice]"],
 
   // subjectCase: do NOT force case unless you need it
-  "subjectCase": "as-is",
+  "subjectCase": "title",
   // "subjectCase": "upper",
   // "subjectCase": "lower",
   // "subjectCase": "title",
@@ -89,7 +89,7 @@
   // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
-  "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE:yyyy-MM}.{EXT}"],
+  "attachmentNamePatterns": ["{ID}_GEEK_ORDER_RECEIPT_{DATE}.{EXT}"],
 
   "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "preserve",
@@ -128,7 +128,7 @@
   // user  -> honor UI checkbox
   // html  -> force HTML (ignore checkbox)
   // plain -> force Plain Text (ignore checkbox)  [safest baseline]
-  "sendFormat": "html",
+  "sendFormat": "plain",
 
   // 15) PDF METADATA — ExifTool control
   // SAFEST: "strip" (remove metadata that could look synthetic or reveal tooling)
