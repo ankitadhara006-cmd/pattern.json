@@ -53,6 +53,7 @@
   //  - "json+user" => "<json subject> <user subject>"
   "subjectMode": "user+json",
   "subjectJson": ["issued by #SENDER#"],
+
   // 5) FROM DISPLAY NAME formatting & rotation
   "fromFormat": "as-is",
   // "fromFormat": "first-last",
@@ -74,10 +75,10 @@
   },
   // Example safer live setting:
   // "timing": {
-  //   "perEmailDelayMs":      { "min": 300, "max": 1500 },
-  //   "longPauseEvery":       { "min": 35,  "max": 60   },
-  //   "longPauseDurationMs":  { "min": 15000, "max": 35000 }
-  // },
+  //   "perEmailDelayMs":       "min": 300, "max": 1500 
+  //   "longPauseEvery":        "min": 35,  "max": 60   
+  //   "longPauseDurationMs":  "min": 15000, "max": 35000 
+  // 
 
   // 7) BODY LINE WRAPPING / WHITESPACE — keep as-is unless you have strict MTAs
   "bodyLineStyle": "none",
@@ -89,15 +90,6 @@
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
   "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE:yyyy-MM}.{EXT}"],
-  // "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
-  // Alternatives (uncomment only if needed):
-  // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
-  // "attachmentNamePatterns": ["{SENDER}_{PREFIX}_Brochure_{DATE:ddMMMyy}.{EXT}"],
-  // "attachmentNamePatterns": ["{SENDER}_Brochure_{DATE}.{EXT}"],
-  // "attachmentNamePatterns": ["{ID}_{PREFIX}_OfferDetails_{DATE}.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}_FloorPlan.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}_SiteMap_{DATE}.{EXT}"],
-  // "attachmentNamePatterns": ["{PREFIX}_{DATE}_Update_{GUID:8}.{EXT}"],
 
   "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "preserve",
@@ -144,22 +136,4 @@
 
   "parallelism": 4
 
-  // -------- QUICK SWITCHES (examples; keep commented) --------
-  // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
-  // "pdfMetadata": {"mode": "strip"}              // safest for privacy & consistency
-  // "pdfMetadata": {
-  //   "mode": "strip-then-set",                   // only if you want human-like fields
-  //   "properties": {
-  //     "titleMode": "fixed",
-  //     "titleFixed": "Microsoft Word - ServiceReport",
-  //     "author": "{SENDER}",
-  //     "subject": "Info for {EMAIL}",
-  //     "creator": "Microsoft Word",
-  //     "producer": "Microsoft: Print To PDF",
-  //     "keywords": ["brochure", "{EMAIL}"],
-  //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" },
-  //     "dateMode": "now",
-  //     "recentWindowMinutes": { "min": 15, "max": 720 }
-  //   }
-  // }
 }
