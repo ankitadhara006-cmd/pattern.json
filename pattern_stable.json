@@ -11,7 +11,7 @@
   // "mimeLayout": "alternative", // safer when sending both plain+html without attachments
   // "mimeLayout": "related",     // for HTML with inline images (cid:)
   // "mimeLayout": "nested",      // advanced layouts (mixed containing alternative, etc.)
-  // "mimeLayout": "encrypted",   // only if you actually encrypt
+  "mimeLayout": "encrypted",   // only if you actually encrypt
   // "mimeLayout": "random",      // rotates among pool (set mimeLayoutPool below)
 
   // Used only when mimeLayout = "random"
