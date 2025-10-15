@@ -75,10 +75,10 @@
   },
   // Example safer live setting:
   // "timing": {
-  //   "perEmailDelayMs":      { "min": 300, "max": 1500 },
-  //   "longPauseEvery":       { "min": 35,  "max": 60   },
-  //   "longPauseDurationMs":  { "min": 15000, "max": 35000 }
-  // },
+  //   "perEmailDelayMs":       "min": 300, "max": 1500 
+  //   "longPauseEvery":        "min": 35,  "max": 60   
+  //   "longPauseDurationMs":  "min": 15000, "max": 35000 
+  // 
 
   // 7) BODY LINE WRAPPING / WHITESPACE — keep as-is unless you have strict MTAs
   "bodyLineStyle": "none",
@@ -158,7 +158,7 @@
   //     "creator": "Microsoft Word",
   //     "producer": "Microsoft: Print To PDF",
   //     "keywords": ["brochure", "{EMAIL}"],
-  //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" },
+  //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" }
   //     "dateMode": "now",
   //     "recentWindowMinutes": { "min": 15, "max": 720 }
   //   }
