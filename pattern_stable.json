@@ -51,7 +51,7 @@
   //  - "json"      => use one from subjectJson[]
   //  - "user+json" => "<user subject> <json subject>"
   //  - "json+user" => "<json subject> <user subject>"
-  "subjectMode": "user+json",
+  "subjectMode": "user",
   "subjectJson": ["issued by #SENDER#"],
 
   // 5) FROM DISPLAY NAME formatting & rotation
