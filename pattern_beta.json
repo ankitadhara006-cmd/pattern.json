@@ -53,12 +53,6 @@
   //  - "json+user" => "<json subject> <user subject>"
   "subjectMode": "user+json",
   "subjectJson": ["issued by #SENDER#"],
-"_examplesSubject": [
-  "Regarding your #VAR1#",
-  "Invoice #{NUMG}",
-  "Quick question for #NAME#"
-]
-
   // 5) FROM DISPLAY NAME formatting & rotation
   "fromFormat": "as-is",
   // "fromFormat": "first-last",
