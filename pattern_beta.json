@@ -52,7 +52,7 @@
   //  - "user+json" => "<user subject> <json subject>"
   //  - "json+user" => "<json subject> <user subject>"
   "subjectMode": "user+json",
-  "subjectJson": [issued by "#SENDER#"],
+  "subjectJson": ["issued by #SENDER#"],
   // "Regarding your #VAR1#",
   // "Invoice #{NUM6}",
   // "Quick question for #NAME#",
