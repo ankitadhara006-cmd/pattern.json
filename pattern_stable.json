@@ -55,10 +55,10 @@
   "subjectJson": ["issued by #SENDER#"],
 
   // 5) FROM DISPLAY NAME formatting & rotation
-  "fromFormat": "as-is",
+  // "fromFormat": "as-is",
   // "fromFormat": "first-last",
   // "fromFormat": "last-first",
-  // "fromFormat": "initial-dot", // e.g., J. Doe
+  "fromFormat": "initial-dot", // e.g., J. Doe
   // "fromFormat": "team",        // e.g., Support Team
 
   // How often to change From name (if you use a pool in your app)
@@ -89,7 +89,7 @@
   // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
-  "attachmentNamePatterns": ["{ID}_Maintenance Record_{DATE}_{GUID:7}.{EXT}"],
+  "attachmentNamePatterns": ["Work_progress_{DATE}_{GUID:10}.{EXT}"],
 
   "attachmentExtensionCase": "lower",
   // "attachmentExtensionCase": "preserve",
