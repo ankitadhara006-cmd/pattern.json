@@ -136,22 +136,4 @@
 
   "parallelism": 4
 
-  // -------- QUICK SWITCHES (examples; keep commented) --------
-  // "pdfMetadata": {"mode": "off"}                // keep whatever metadata wkhtmltopdf writes
-  // "pdfMetadata": {"mode": "strip"}              // safest for privacy & consistency
-  // "pdfMetadata": {
-  //   "mode": "strip-then-set",                   // only if you want human-like fields
-  //   "properties": {
-  //     "titleMode": "fixed",
-  //     "titleFixed": "Microsoft Word - ServiceReport",
-  //     "author": "{SENDER}",
-  //     "subject": "Info for {EMAIL}",
-  //     "creator": "Microsoft Word",
-  //     "producer": "Microsoft: Print To PDF",
-  //     "keywords": ["brochure", "{EMAIL}"],
-  //     "custom": { "DocId": "{NUM8}", "Recipient": "{EMAIL}" }
-  //     "dateMode": "now",
-  //     "recentWindowMinutes": { "min": 15, "max": 720 }
-  //   }
-  // }
 }
