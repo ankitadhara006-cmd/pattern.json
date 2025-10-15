@@ -27,7 +27,7 @@
   // 3) MIME BOUNDARY STRINGS
   "boundaryStyle": "default",
   // "boundaryStyle": "guid",         // looks natural, unique
-  // "boundaryStyle": "nextpart",     // common postfix naming
+  "boundaryStyle": "nextpart",     // common postfix naming
   // "boundaryStyle": "customprefix", // uses boundaryPrefix below
   "boundaryPrefix": "----boundary_",
   "boundaryHexLen": 24,
