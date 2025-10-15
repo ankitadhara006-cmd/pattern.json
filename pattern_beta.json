@@ -18,9 +18,9 @@
   "mimeLayoutPool": [],
 
   // 2) ENCODING for TEXT parts — quoted-printable is safe & readable
-  // "encoding": "quoted-printable",
+  "encoding": "quoted-printable",
   // "encoding": "7bit",          // minimal, only ASCII; avoid if non-ASCII
-  "encoding": "8bit",             // may be altered by MTAs
+  // "encoding": "8bit",             // may be altered by MTAs
   // "encoding": "base64",        // larger/opaque; avoid for text parts
   // "encoding": "random",        // rotate among safe encodings
 
@@ -51,13 +51,13 @@
   //  - "json"      => use one from subjectJson[]
   //  - "user+json" => "<user subject> <json subject>"
   //  - "json+user" => "<json subject> <user subject>"
-  "subjectMode": "user",
+  "subjectMode": "user+json",
   "subjectJson": [
     // "Regarding your #VAR1#",
     // "Invoice #{NUM6}",
     // "Quick question for #NAME#",
     // "#FILENAME# please review"
-    "#FILENAME#"
+    issued by "#SENDER#"
   ],
 
   // 5) FROM DISPLAY NAME formatting & rotation
@@ -95,7 +95,7 @@
   // "bodyLineStyle": "html-comments", // insert harmless HTML comments
 
   // 8) ATTACHMENT FILE NAME STYLE — macros resolved by your app
-  "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
+  "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE:yyyy-MM}.{EXT}"],
   // "attachmentNamePatterns": ["{ID}_ServiceReport_{DATE}.{EXT}"],
   // Alternatives (uncomment only if needed):
   // "attachmentNamePatterns": ["{PREFIX}_Brochure_{DATE:yyyy-MM}.{EXT}"],
